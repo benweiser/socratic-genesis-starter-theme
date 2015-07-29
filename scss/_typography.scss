@@ -1,0 +1,122 @@
+
+/* ## Typographical Elements
+--------------------------------------------- */
+
+
+body {
+	background-color: $base-background-color;
+	font-weight: 300;
+	margin: 0;
+	color: $base-font-color;
+  	font-family: $base-font-family;
+  	font-size: $base-font-size;
+  	line-height: $base-line-height;
+}
+
+a,
+button,
+input:focus,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+textarea:focus,
+.button,
+.gallery img {
+	@include transition(all 0.1s ease-in-out);
+}
+
+::-moz-selection {
+	background-color: #333;
+	color: #fff;
+}
+
+::selection {
+	background-color: #333;
+	color: #fff;
+}
+
+a {
+	color: #e5554e;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #333;
+}
+
+p {
+	margin: 0 0 em(28);
+	padding: 0;
+}
+
+ol,
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+b,
+strong {
+	font-weight: 700;
+}
+
+blockquote,
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+blockquote {
+	margin: rem(40);
+}
+
+blockquote::before {
+	content: "\201C";
+	display: block;
+	font-size: rem(30);
+	height: 0;
+	left: rem(-20);
+	position: relative;
+	top: rem(-10);
+}
+
+
+/* ## Headings
+--------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: $base-font-color;
+	font-family: $heading-font-family;
+	font-weight: 400;
+	line-height: $heading-line-height;
+	margin: 0 0 rem(10);
+}
+
+h1 {
+  font-size: $base-font-size * 1.7;
+}
+h2 {
+  font-size: $base-font-size * 1.4;
+}
+h3 {
+  font-size: $base-font-size * 1.23;
+}
+h4 {
+  font-size: $base-font-size * 1.15;
+}
+h5 {
+  font-size: $base-font-size;
+}
+h6 {
+  font-size: $base-font-size;
+}
