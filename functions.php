@@ -48,7 +48,7 @@ function gs_theme_setup() {
 		'header',
 		'nav',
 		'subnav',
-		'inner',
+	//	'inner',
 		'footer-widgets',
 		'footer'
 	) );
@@ -78,9 +78,6 @@ function gs_theme_setup() {
 	// Add Mobile Navigation
 	add_action( 'genesis_before', 'gs_mobile_navigation', 5 );
 	
-	// Enable Custom Footer
-	remove_action( 'genesis_footer', 'genesis_do_footer' );
-	add_action( 'genesis_footer', 'gs_do_footer' );
 	
 	//Enqueue Sandbox Scripts
 	add_action( 'wp_enqueue_scripts', 'gs_enqueue_scripts' );
