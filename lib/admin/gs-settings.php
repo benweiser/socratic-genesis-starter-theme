@@ -36,7 +36,7 @@ class Genesis_Sandbox_Settings extends Genesis_Admin_Boxes {
 	function __construct() {
 		
 		// Specify a unique page ID. 
-		$page_id = CHILD_SETTINGS_FIELD;
+		$page_id = CHILD_SETTINs_FIELD;
 		
 		// Set it as a child to genesis, and define the menu and page titles
 		$menu_ops = array(
@@ -52,8 +52,8 @@ class Genesis_Sandbox_Settings extends Genesis_Admin_Boxes {
 		$page_ops = array( 'screen_icon' => 'options-general', );		
 		
 		// Give it a unique settings field. 
-		// You'll access them from genesis_get_option( 'option_name', CHILD_SETTINGS_FIELD );
-		$settings_field = CHILD_SETTINGS_FIELD;
+		// You'll access them from genesis_get_option( 'option_name', CHILD_SETTINs_FIELD );
+		$settins_field = CHILD_SETTINs_FIELD;
 		
 		// Set the default values
 		$default_settings = array(
@@ -62,10 +62,10 @@ class Genesis_Sandbox_Settings extends Genesis_Admin_Boxes {
 		);
 		
 		// Create the Admin Page
-		$this->create( $page_id, $menu_ops, $page_ops, $settings_field, $default_settings );
+		$this->create( $page_id, $menu_ops, $page_ops, $settins_field, $default_settings );
 
 		// Initialize the Sanitization Filter
-		add_action( 'genesis_settings_sanitizer_init', array( $this, 'sanitization_filters' ) );
+		add_action( 'genesis_settins_sanitizer_init', array( $this, 'sanitization_filters' ) );
 		
 		// Add admin script
 		//add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
@@ -82,13 +82,13 @@ class Genesis_Sandbox_Settings extends Genesis_Admin_Boxes {
 		
 		genesis_add_option_filter(
 			'no_html', 
-			$this->settings_field,
+			$this->settins_field,
 			array() // Enter options here as an array
 		);
 		
 		genesis_add_option_filter(
 			'safe_html', 
-			$this->settings_field,
+			$this->settins_field,
 			array( // Enter options here as an array
 				'footer_left',
 				'footer_right',
@@ -97,7 +97,7 @@ class Genesis_Sandbox_Settings extends Genesis_Admin_Boxes {
 		
 		genesis_add_option_filter(
 			'one_zero',
-			$this->settings_field,
+			$this->settins_field,
 			array( // Enter options here as an array
 				'move_nav',
 				'move_subnav',
@@ -108,7 +108,7 @@ class Genesis_Sandbox_Settings extends Genesis_Admin_Boxes {
 		
 		genesis_add_option_filter(
 			'requires_unfiltered_html',
-			$this->settings_field,
+			$this->settins_field,
 			array(
 			) // Enter options here as an array
 		);
@@ -120,9 +120,9 @@ class Genesis_Sandbox_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.1.0
 	 */	
-	function gs_scripts() {
+	function s_scripts() {
 		if ( genesis_is_menu_page( $this->page_id ) ) {
-			wp_register_script( 'sandbox-admin', CHILD_LIB . '/js/' . gs_script_suffix( 'admin' ), array( 'jquery' ) , CHILD_THEME_VERSION );
+			wp_register_script( 'sandbox-admin', CHILD_LIB . '/js/' . s_script_suffix( 'admin' ), array( 'jquery' ) , CHILD_THEME_VERSION );
 		}
 	}
 	
@@ -131,12 +131,12 @@ class Genesis_Sandbox_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @since 1.1.0
 	 *
-	 * @see gs_general_settings() Callback for child theme settings
-	 * @see gs_footer_settings() Callback for footer settings
+	 * @see s_general_settings() Callback for child theme settings
+	 * @see s_footer_settings() Callback for footer settings
 	 */
 	function metaboxes() {
 		
-		add_meta_box( 'gs-footer-settings', __( 'Genesis Sandbox Footer Settings', CHILD_DOMAIN ) , array( $this, 'gs_footer_settings' ), $this->pagehook, 'main', 'high' );
+		add_meta_box( 'gs-footer-settings', __( 'Genesis Sandbox Footer Settings', CHILD_DOMAIN ) , array( $this, 's_footer_settings' ), $this->pagehook, 'main', 'high' );
 				
 	}
 	
@@ -220,7 +220,7 @@ class Genesis_Sandbox_Settings extends Genesis_Admin_Boxes {
 	 *
 	 * @see Genesis_Sandbox_Settings::metaboxes()
 	 */
-	function gs_footer_settings() { 
+	function s_footer_settings() { 
 		/**
 		 * Add HTML
 		 * For name, use echo $this->get_field_name( 'option' );

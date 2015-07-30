@@ -3,22 +3,22 @@
 /**
  * Custom amendments for the theme.
  *
- * @category   Genesis_Sandbox
+ * @category   Socratic
  * @package    Functions
  * @subpackage Functions
- * @author     Travis Smith and Jonathan Perez
+ * @author     Ben Weiser
  * @license    http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link       http://surefirewebservices.com/
- * @since      1.1.0
+ * @link       http://benweiser.com
+ * @since      1.1
  */
 
-// Initialize Sandbox ** DON'T REMOVE **
+// Initialize
 require_once( get_stylesheet_directory() . '/lib/init.php');
 
-add_action( 'genesis_setup', 'gs_theme_setup', 15 );
+add_action( 'genesis_setup', 's_theme_setup', 15 );
 
 //Theme Set Up Function
-function gs_theme_setup() {
+function s_theme_setup() {
 	/** 
 	 * 01 Set width of oEmbed
 	 * genesis_content_width() will be applied; Filters the content width based on the user selected layout.
@@ -76,11 +76,11 @@ function gs_theme_setup() {
 	);
 	
 	// Add Mobile Navigation
-	add_action( 'genesis_before', 'gs_mobile_navigation', 5 );
+	add_action( 'genesis_before', 's_mobile_navigation', 5 );
 	
 	
 	//Enqueue Sandbox Scripts
-	add_action( 'wp_enqueue_scripts', 'gs_enqueue_scripts' );
+	add_action( 'wp_enqueue_scripts', 's_enqueue_scripts' );
 	
 	/**
 	 * 13 Editor Styles
@@ -91,11 +91,11 @@ function gs_theme_setup() {
 	
 	
 	// Register Sidebars
-	gs_register_sidebars();
+	s_register_sidebars();
 	
 	// Unregister SuperFish - Won't be needed in 2.0	
-	add_action( 'wp_enqueue_scripts', 'gs_unregister_superfish' );
-	function gs_unregister_superfish() {
+	add_action( 'wp_enqueue_scripts', 's_unregister_superfish' );
+	function s_unregister_superfish() {
 		wp_deregister_script( 'superfish' );
 		wp_deregister_script( 'superfish-args' );
 	}
@@ -103,7 +103,7 @@ function gs_theme_setup() {
 } // End of Set Up Function
 
 // Register Sidebars
-function gs_register_sidebars() {
+function s_register_sidebars() {
 	$sidebars = array(
 		array(
 			'id'			=> 'home-top',
@@ -145,26 +145,26 @@ require_once('lib/scripts.php');
  * Add navigation menu 
  * Required for each registered menu.
  * 
- * @uses gs_navigation() Sandbox Navigation Helper Function in gs-functions.php.
+ * @uses s_navigation() Sandbox Navigation Helper Function in s-functions.php.
  */
 
 //Add Mobile Menu
-function gs_mobile_navigation() {
-	
+function s_mobile_navigation() {
 	$mobile_menu_args = array(
 		'echo' => true,
 	);
 	
-	gs_navigation( 'mobile', $mobile_menu_args );
+	s_navigation( 'mobile', $mobile_menu_args );
+
 }
 
 //Add Footer Menu
-function gs_footer_navigation() {
+function s_footer_navigation() {
 	
 	$footer_menu_args = array(
 		'echo' => true,
 		'depth' => 1,
 	);
 	
-	gs_navigation( 'footer', $footer_menu_args );
+	s_navigation( 'footer', $footer_menu_args );
 }

@@ -711,15 +711,15 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 
 					/** Register the nag messages and prepare them to be processed */
                		if ( isset( $this->strings['nag_type'] ) )
-						add_settings_error( 'tgmpa', 'tgmpa', $rendered, sanitize_html_class( strtolower( $this->strings['nag_type'] ), 'updated' ) );
+						add_settins_error( 'tgmpa', 'tgmpa', $rendered, sanitize_html_class( strtolower( $this->strings['nag_type'] ), 'updated' ) );
 					else
-						add_settings_error( 'tgmpa', 'tgmpa', $rendered, 'updated' );
+						add_settins_error( 'tgmpa', 'tgmpa', $rendered, 'updated' );
 				}
 			}
 
-			/** Admin options pages already output settings_errors, so this is to avoid duplication */
+			/** Admin options pages already output settins_errors, so this is to avoid duplication */
 			if ( 'options-general' !== $current_screen->parent_base )
-				settings_errors( 'tgmpa' );
+				settins_errors( 'tgmpa' );
 
 		}
 

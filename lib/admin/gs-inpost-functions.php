@@ -15,7 +15,7 @@
 /** Exit if accessed directly */
 if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
 
-add_action( 'admin_menu', 'gs_add_inpost_scripts_box' );
+add_action( 'admin_menu', 's_add_inpost_scripts_box' );
 /**
  * Register a new meta box to the post / page edit screen, so that the user can
  * set SEO options on a per-post or per-page basis.
@@ -28,11 +28,11 @@ add_action( 'admin_menu', 'gs_add_inpost_scripts_box' );
  *
  * @see genesis_inpost_seo_box() Generates the content in the meta box
  */
-function gs_add_inpost_scripts_box() {
+function s_add_inpost_scripts_box() {
 
 	foreach ( (array) get_post_types( array( 'public' => true ) ) as $type ) {
 		if ( defined( 'GENESIS_SEO_DISABLED' ) && GENESIS_SEO_DISABLED ) 
-			add_meta_box( 'gs_inpost_scripts_box', __( 'Scripts Settings', CHILD_DOMAIN ), 'gs_inpost_scripts_box', $type, 'normal', 'high' );
+			add_meta_box( 's_inpost_scripts_box', __( 'Scripts Settings', CHILD_DOMAIN ), 's_inpost_scripts_box', $type, 'normal', 'high' );
 	}
 
 }
@@ -47,8 +47,8 @@ function gs_add_inpost_scripts_box() {
  * @subpackage Inpost-Metaboxes
  *
  */
-function gs_inpost_scripts_box() {
-	wp_nonce_field( 'gs_inpost_scripts_save', 'gs_inpost_scripts_nonce' );
+function s_inpost_scripts_box() {
+	wp_nonce_field( 's_inpost_scripts_save', 's_inpost_scripts_nonce' );
 	?>
 	
 	<p><label for="genesis_redirect"><b><?php _e( 'Custom Redirect URI', 'genesis' ); ?></b> <a href="http://www.google.com/support/webmasters/bin/answer.py?hl=en&amp;answer=93633" target="_blank" title="301 Redirect">[?]</a></label></p>
@@ -63,7 +63,7 @@ function gs_inpost_scripts_box() {
 
 }
 
-add_action( 'save_post', 'gs_inpost_scripts_save', 1, 2 );
+add_action( 'save_post', 's_inpost_scripts_save', 1, 2 );
 /**
  * Saves the layout options when we save a post / page.
  *
@@ -81,7 +81,7 @@ add_action( 'save_post', 'gs_inpost_scripts_save', 1, 2 );
  * @return integer|null Returns post ID if the nonce was not correct or user was not
  * allowed to edit content. Returns null if doing autosave, ajax or cron
  */
-function gs_inpost_scripts_save( $post_id, $post ) {
+function s_inpost_scripts_save( $post_id, $post ) {
 
 	/**	Verify the nonce and capability */
 	if ( ! isset( $_POST['genesis_scripts'] ) )
@@ -97,6 +97,6 @@ function gs_inpost_scripts_save( $post_id, $post ) {
 	/** No sanitization necessary for scripts */
 
 	/** Save custom field data */
-	genesis_save_custom_fields( $data, 'gs_inpost_scripts_save', 'gs_inpost_scripts_nonce', $post, $post_id );
+	genesis_save_custom_fields( $data, 's_inpost_scripts_save', 's_inpost_scripts_nonce', $post, $post_id );
 
 }

@@ -30,7 +30,7 @@ remove_all_actions( 'genesis_after_header' );
 remove_all_actions( 'genesis_footer' );
 //remove_action( 'genesis_footer', 'genesis_footer_markup_open', 5 );
 //remove_action( 'genesis_footer', 'genesis_do_footer' );
-//remove_action( 'genesis_footer', 'gs_do_footer' );
+//remove_action( 'genesis_footer', 's_do_footer' );
 //remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
 
 /** Remove Footer Widgets */
@@ -42,14 +42,14 @@ remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 /** Remove Post Title */
 remove_action( 'genesis_post_title', 'genesis_do_post_title' );
 
-add_filter( 'body_class', 'gs_add_iframe_body_class' );
+add_filter( 'body_class', 's_add_iframe_body_class' );
 /**
  * Add page specific body class
  *
  * @param $classes array Body Classes
  * @return $classes array Modified Body Classes
  */
-function gs_add_iframe_body_class( $classes ) {
+function s_add_iframe_body_class( $classes ) {
    $classes[] = 'iframe';
    return $classes;
 }

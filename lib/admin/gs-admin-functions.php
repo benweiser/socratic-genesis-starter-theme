@@ -26,7 +26,7 @@
 /* Editor Style
 ------------------------------------------------------------ */
 
-add_filter( 'mce_buttons_3', 'gs_mce_buttons_3' );
+add_filter( 'mce_buttons_3', 's_mce_buttons_3' );
 /**
  * Show the style dropdown on the THIRD row of the editor toolbar.
  *
@@ -36,7 +36,7 @@ add_filter( 'mce_buttons_3', 'gs_mce_buttons_3' );
  * @param array $buttons Exising buttons
  * @return array $buttons Amended buttons
  */
-function gs_mce_buttons_3( array $buttons ) {
+function s_mce_buttons_3( array $buttons ) {
 
 	$additional_buttons = array( 'styleselect', 'fontselect', 'fontsizeselect', 'hr', 'backcolor' );
 
@@ -44,14 +44,14 @@ function gs_mce_buttons_3( array $buttons ) {
 
 }
 
-add_filter( 'tiny_mce_before_init', 'gs_mce_before_init' );
+add_filter( 'tiny_mce_before_init', 's_mce_before_init' );
 /**
  * Add column entries to the style dropdown.
  *
  * @param array $settings Existing settings for all toolbar items
  * @return array $settings Amended settings
  */
-function gs_mce_before_init( array $settings ) {
+function s_mce_before_init( array $settings ) {
 
 	$style_formats = array(
 		array( 'title' => __( 'Columns', CHILD_DOMAIN ), ),
@@ -122,12 +122,12 @@ function gs_mce_before_init( array $settings ) {
 
 }
 
-add_filter( 'admin_footer_text', 'gs_admin_footer' );
+add_filter( 'admin_footer_text', 's_admin_footer' );
 /**
  * Modify Admin Footer Text and Logo
  *
  */
-function gs_admin_footer() {
+function s_admin_footer() {
 	echo '<span id="footer-thankyou">Thank you for creating with <a href="http://wordpress.org/">WordPress</a> &amp; <a href="' . CHILD_THEME_URL . '">' . CHILD_THEME_NAME . '</a> designed by <a href="' . CHILD_THEME_URL . '">' . CHILD_DEVELOPER . '</a></span>';
 } 
 

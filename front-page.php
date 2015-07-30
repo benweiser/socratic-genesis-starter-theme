@@ -12,17 +12,17 @@
  * @since      1.1.0
  */
 
-add_action( 'get_header', 'gs_home_helper' );
+add_action( 'get_header', 's_home_helper' );
 /**
  * Add widget support for homepage. If no widgets active, display the default loop.
  *
  */
-function gs_home_helper() {
+function s_home_helper() {
 
         if ( is_active_sidebar( 'home-top' ) || is_active_sidebar( 'home-left' ) || is_active_sidebar( 'home-right' ) || is_active_sidebar( 'home-bottom' ) ) {
 
                 remove_action( 'genesis_loop', 'genesis_do_loop' );
-                add_action( 'genesis_loop', 'gs_home_widgets' );
+                add_action( 'genesis_loop', 's_home_widgets' );
                 
                 /** Force Full Width */
                 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
@@ -37,7 +37,7 @@ function gs_home_helper() {
  * Add widget support for homepage. If no widgets active, display the default loop.
  *
  */
-function gs_home_widgets() {
+function s_home_widgets() {
 
         genesis_widget_area(
                 'home-top', 

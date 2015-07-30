@@ -27,26 +27,26 @@ add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_c
 // Force Layout (does not allow user over-ride)
 add_filter( 'genesis_site_layout', '__genesis_return_full_width_content' );
 
-add_filter( 'body_class', 'gs_add_portfolio_body_class' );
+add_filter( 'body_class', 's_add_portfolio_body_class' );
 /**
  * Add page specific body class
  *
  * @param $classes array Body Classes
  * @return $classes array Modified Body Classes
  */
-function gs_add_portfolio_body_class( $classes ) {
+function s_add_portfolio_body_class( $classes ) {
    $classes[] = 'portfolio-widgetized';
    return $classes;
 }
 
-add_filter( 'post_class' , 'gs_portfolio_post_class' );
+add_filter( 'post_class' , 's_portfolio_post_class' );
 /**
  * Add .portfolio-posts class to every post, except first 2
  *
  * @param  array $classes Array of Post Classes.
  * @return array $classes Modified Array of Post Classes.
  */
-function gs_portfolio_post_class( $classes ) {
+function s_portfolio_post_class( $classes ) {
 	global $loop_counter;
 	$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 		
@@ -57,13 +57,13 @@ function gs_portfolio_post_class( $classes ) {
 
 // Remove default content / loop
 remove_action( 'genesis_loop', 'genesis_do_loop' );
-add_action( 'genesis_loop', 'gs_portfolio_widget_page' );
+add_action( 'genesis_loop', 's_portfolio_widget_page' );
 /**
  * Add the Portfolio widget area
  *
  * @uses genesis_widget_area() Conditionally displays a sidebar, wrapped in a div by default.
  */
-function gs_portfolio_widget_page() {
+function s_portfolio_widget_page() {
 	genesis_widget_area(
 		'portfolio', 
 		array( 'before' => '<div class="portfolio widget-area">', ) 

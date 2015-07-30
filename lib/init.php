@@ -17,23 +17,23 @@
 /** Exit if accessed directly */
 if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
 
-add_action( 'genesis_init', 'gs_constants', 15 );
+add_action( 'genesis_init', 's_constants', 15 );
 /**
  * This function defines the Genesis Child theme constants
  *
- * Data Constants: CHILD_SETTINGS_FIELD, CHILD_DOMAIN, CHILD_THEME_VERSION
+ * Data Constants: CHILD_SETTINs_FIELD, CHILD_DOMAIN, CHILD_THEME_VERSION
  * CHILD_THEME_NAME, CHILD_THEME_URL, CHILD_DEVELOPER, CHILD_DEVELOPER_URL
  * Directories: CHILD_LIB_DIR, CHILD_IMAGES_DIR, CHILD_ADMIN_DIR, CHILD_JS_DIR, CHILD_CSS_DIR
  * URLs: CHILD_LIB, CHILD_IMAGES, CHILD_ADMIN, CHILD_JS, CHILD_CSS
  *
  * @since 1.1.0
  */
-function gs_constants() {
+function s_constants() {
 	$theme = wp_get_theme();
 	
 	// Child theme (Change but do not remove)
 		/** @type constant Child Theme Options/Settings. */
-		define( 'CHILD_SETTINGS_FIELD', $theme->get('TextDomain') . '-settings' );
+		define( 'CHILD_SETTINs_FIELD', $theme->get('TextDomain') . '-settings' );
 		
 		/** @type constant Text Domain. */
 		define( 'CHILD_DOMAIN', $theme->get('TextDomain') );
@@ -87,31 +87,31 @@ function gs_constants() {
 		define( 'CHILD_CSS',    CHILD_URL .'/css' );	
 }
 
-add_action( 'genesis_init', 'gs_init', 15 );
+add_action( 'genesis_init', 's_init', 15 );
 /**
  * This function calls necessary child theme files
  *
  * @since 1.1.0
  */
-function gs_init() {
+function s_init() {
 		
 	/** Theme Specific Functions */
-	include_once( CHILD_LIB_DIR . '/functions/gs-functions.php' );	
+	include_once( CHILD_LIB_DIR . '/functions/s-functions.php' );	
 	
 	// Load admin files when necessary
 	if ( is_admin() ) {
 
 		/** Admin Functions */
-		include_once( CHILD_LIB_DIR . '/admin/gs-admin-functions.php');
+		include_once( CHILD_LIB_DIR . '/admin/s-admin-functions.php');
 		
 		/** New Admin Page */
-		include_once( CHILD_LIB_DIR . '/admin/gs-settings.php');
+		include_once( CHILD_LIB_DIR . '/admin/s-settings.php');
 		
 		/** Inpost Metaboxes */
-		include_once( CHILD_LIB_DIR . '/admin/gs-inpost-functions.php');
+		include_once( CHILD_LIB_DIR . '/admin/s-inpost-functions.php');
 
 		/** Custom Logo Uploader **/
-		include_once( CHILD_LIB_DIR . '/admin/gs-logo-upload.php' );
+		include_once( CHILD_LIB_DIR . '/admin/s-logo-upload.php' );
 		
 		/** Get required plugins */
 	//require_once( CHILD_LIB_DIR . '/plugins/plugins.php' );
@@ -120,7 +120,7 @@ function gs_init() {
 	
 }
 
-add_filter( 'http_request_args', 'gs_prevent_theme_update', 5, 2 );
+add_filter( 'http_request_args', 's_prevent_theme_update', 5, 2 );
 /**
  * Don't update theme from .org repo.
  *
@@ -132,7 +132,7 @@ add_filter( 'http_request_args', 'gs_prevent_theme_update', 5, 2 );
  * @author Mark Jaquith
  * @link   http://markjaquith.wordpress.com/2009/12/14/excluding-your-plugin-or-theme-from-update-checks/
  */
-function gs_prevent_theme_update( $r, $url ) {
+function s_prevent_theme_update( $r, $url ) {
 	if ( 0 !== strpos( $url, 'http://api.wordpress.org/themes/update-check' ) )
 		return $r; // Not a theme update request. Bail immediately.
 	$themes = unserialize( $r['body']['themes'] );
@@ -145,14 +145,14 @@ function gs_prevent_theme_update( $r, $url ) {
 /*
 Add Theme Settings Page
 ---------------------------------------------------------------------------------------------------- */
-add_action( 'genesis_admin_menu', 'gs_add_settings', 5 );
+add_action( 'genesis_admin_menu', 's_add_settings', 5 );
 /**
  * Add the Theme Settings Page
  *
  * @since 1.1.0
  */
-function gs_add_settings() {
-	global $_gs_settings;
+function s_add_settings() {
+	global $_s_settings;
 	
-	$_gs_settings = new Genesis_Sandbox_Settings;	 	
+	$_s_settings = new Genesis_Sandbox_Settings;	 	
 }
