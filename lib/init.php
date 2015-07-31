@@ -102,17 +102,19 @@ function s_init() {
 	if ( is_admin() ) {
 
 		/** Admin Functions */
-		include_once( CHILD_LIB_DIR . '/admin/s-admin-functions.php');
+		include_once( CHILD_LIB_DIR . '/admin/s-admin-functions.php' );
 		
 		/** New Admin Page */
-		include_once( CHILD_LIB_DIR . '/admin/s-settings.php');
+		include_once( CHILD_LIB_DIR . '/admin/s-settings.php' );
 		
 		/** Inpost Metaboxes */
-		include_once( CHILD_LIB_DIR . '/admin/s-inpost-functions.php');
+		include_once( CHILD_LIB_DIR . '/admin/s-inpost-functions.php' );
 
 		/** Custom Logo Uploader **/
 		include_once( CHILD_LIB_DIR . '/admin/s-logo-upload.php' );
-		
+
+		/**Image Reloaded **/
+		include_once( CHILD_LIB_DIR . '/admin/s-customize-image-reloaded.php' );
 		/** Get required plugins */
 	//require_once( CHILD_LIB_DIR . '/plugins/plugins.php' );
 		
@@ -145,7 +147,7 @@ function s_prevent_theme_update( $r, $url ) {
 /*
 Add Theme Settings Page
 ---------------------------------------------------------------------------------------------------- */
-add_action( 'genesis_admin_menu', 's_add_settings', 5 );
+//add_action( 'genesis_admin_menu', 's_add_settings', 5 );
 /**
  * Add the Theme Settings Page
  *

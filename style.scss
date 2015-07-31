@@ -115,7 +115,7 @@ input[type="search"] {
 /* Forms courtesy of Bitters */
 
 //@import "scss/forms";
-
+@import "scss/gravityforms";
 
 /* ## Tables
 --------------------------------------------- */
@@ -434,7 +434,7 @@ img.alignright,
 }
 
 .header-image .site-title > a {
-	background: url(images/logo.png) no-repeat left;
+//	background: url(images/logo.png) no-repeat left;
 	float: left;
 	min-height: rem(60);
 	width: 100%;
@@ -454,7 +454,8 @@ img.alignright,
 .header-image .site-description,
 .header-image .site-title {
 	display: block;
-	text-indent: -9999px;
+// Enable text indent if not using inline logo
+//  text-indent: -9999px;
 }
 
 /* ## Widget Area
@@ -477,7 +478,7 @@ img.alignright,
 ---------------------------------------------------------------------------------------------------- */
 
 @import "scss/navigation";
-@import "scss/mobile-menu";
+//@import "scss/mobile-menu";
 
 /* # Content Area
 ---------------------------------------------------------------------------------------------------- */

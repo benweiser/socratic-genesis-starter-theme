@@ -1,0 +1,16 @@
+.site-inner,
+.wrap {
+	@include outer-container;
+	padding-left:5%;
+	padding-right:5%;
+}
+
+.site-inner {
+	clear: both;
+	padding-top: rem(40);
+	@include outer-container;
+	@include media(1300px) {
+		padding-left:0;
+		padding-right:0;
+	}
+}

@@ -1,0 +1,158 @@
+
+/* ### Wrapping div for .content and .sidebar-primary */
+
+.content-sidebar-sidebar .content-sidebar-wrap,
+.sidebar-content-sidebar .content-sidebar-wrap,
+.sidebar-sidebar-content .content-sidebar-wrap {
+	@include media($large-screen-up) {
+	width: 980px;
+	@include omega();
+ 	@include span-columns(10 of 12);
+ 	float:right;
+	}
+}
+
+.content-sidebar-sidebar .content-sidebar-wrap {
+	@include media($large-screen-up) {
+	@include span-columns(9.2 of 12);
+	@include omega();
+	}
+}
+
+.sidebar-content-sidebar .content-sidebar-wrap,
+.sidebar-sidebar-content .content-sidebar-wrap {
+	@include media($large-screen-up) {
+	@include span-columns(9.2 of 12);
+	float: right;
+	@include omega();
+	}
+}
+
+/* ### Content */
+
+.content {
+	@include media($large-screen-up) {
+//	width: 800px;
+//	width:rem(800);	
+	@include span-columns(8 of 12);
+	@include omega();
+	float: right;
+	}
+}
+
+.content-sidebar .content,
+.content-sidebar-sidebar .content,
+.sidebar-content-sidebar .content {
+	float: left;
+}
+
+.content-sidebar-sidebar .content,
+.sidebar-content-sidebar .content,
+.sidebar-sidebar-content .content {
+	@include media($large-screen-up) {
+	@include span-columns(8 of 12);	
+//	width:580px;
+	}
+}
+
+.sidebar-sidebar-content .content {
+	@include span-columns(8 of 12);
+	@include omega();
+	float:right;
+}
+
+.full-width-content .content {
+	width: 100%;
+}
+
+/* ### Primary Sidebar */
+
+.sidebar-primary {
+	@include media($large-screen-up) {
+//	width: 360px;
+	@include direction-context(right-to-left) {
+	@include span-columns(4 of 12);
+		}
+	}
+}
+
+.sidebar-content .sidebar-primary,
+.sidebar-sidebar-content .sidebar-primary {
+	@include media($large-screen-up) {
+	float: left;
+	//@include span-columns(5 of 12);
+	}
+}
+
+/* ### Secondary Sidebar */
+
+.sidebar-secondary {
+	@include media($large-screen-up) {
+	@include span-columns(2);
+	}
+}
+
+.content-sidebar-sidebar .sidebar-secondary {
+	@include direction-context(right-to-left){
+	@include span-columns(12);
+	@include media($large-screen-up) {
+	@include span-columns(2);
+		}
+	}
+}
+
+/* ## Column Classes
+--------------------------------------------- */
+/* Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css */
+
+.five-sixths,
+.four-sixths,
+.one-fourth,
+.one-half,
+.one-sixth,
+.one-third,
+.three-fourths,
+.three-sixths,
+.two-fourths,
+.two-sixths,
+.two-thirds {
+	float: left;
+	margin-left: 2.564102564102564%;
+}
+
+.one-half,
+.three-sixths,
+.two-fourths {
+	width: 48.717948717948715%;
+}
+
+.one-third,
+.two-sixths {
+	width: 31.623931623931625%;
+}
+
+.four-sixths,
+.two-thirds {
+	width: 65.81196581196582%;
+}
+
+.one-fourth {
+	width: 23.076923076923077%;
+}
+
+.three-fourths {
+	width: 74.35897435897436%;
+}
+
+.one-sixth {
+	width: 14.52991452991453%;
+}
+
+.five-sixths {
+	width: 82.90598290598291%;
+}
+
+.first {
+	clear: both;
+	margin-left: 0;
+}

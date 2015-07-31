@@ -131,3 +131,4 @@ function s_admin_footer() {
 	echo '<span id="footer-thankyou">Thank you for creating with <a href="http://wordpress.org/">WordPress</a> &amp; <a href="' . CHILD_THEME_URL . '">' . CHILD_THEME_NAME . '</a> designed by <a href="' . CHILD_THEME_URL . '">' . CHILD_DEVELOPER . '</a></span>';
 } 
 
+

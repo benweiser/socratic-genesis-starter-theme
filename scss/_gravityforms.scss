@@ -1,0 +1,14 @@
+body .gform_wrapper form .gform_body ul,
+body .gform_wrapper form .gform_body ul li { 
+	list-style-type: none; 
+	list-style-image: none;
+	list-style: none; 
+	background-image: none;
+	background: none;
+	padding: 0;
+	margin: 0;
+	border: none;
+}
+body .gform_wrapper form .gform_body ul > li:before {
+	content: "";
+}
