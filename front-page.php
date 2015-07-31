@@ -41,7 +41,10 @@ function s_home_widgets() {
 
         genesis_widget_area(
                 'home-top', 
-                array( 'before' => '<div id="home-top" class="home-widget widget-area">', ) 
+                array( 
+                        'before' => '<div id="home-top" class="home-widget widget-area">',
+                        'after'  => '</div><!-- end #home-top -->',
+                ) 
         );
         
         echo '<div id="home-middle">';

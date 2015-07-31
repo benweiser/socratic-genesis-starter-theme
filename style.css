@@ -217,7 +217,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Lato, sans-serif;
+  font-family: Francois One, sans-serif;
   font-size: 1.125em;
   line-height: 1.2;
   margin: 0 0 0.75em; }
@@ -430,10 +430,111 @@ input[type="search"] {
 
 /* # Defaults
 ---------------------------------------------------------------------------------------------------- */
-/*
-* Typography courtesy of Bitters
-* @import "scss/typography";
-*/
+/* ## Typographical Elements
+--------------------------------------------- */
+body {
+  background-color: #f5f5f5;
+  font-weight: 300;
+  margin: 0;
+  color: #333;
+  font-family: Lato, sans-serif;
+  font-size: 1.125em;
+  line-height: 1.5; }
+
+a,
+button,
+input:focus,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+textarea:focus,
+.button,
+.gallery img {
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out; }
+
+::-moz-selection {
+  background-color: #333;
+  color: #fff; }
+
+::selection {
+  background-color: #333;
+  color: #fff; }
+
+a {
+  color: #e5554e;
+  text-decoration: none; }
+
+a:hover {
+  color: #333; }
+
+p {
+  margin: 0 0 1.75em;
+  padding: 0; }
+
+ol,
+ul {
+  margin: 0;
+  padding: 0; }
+
+li {
+  list-style-type: none; }
+
+b,
+strong {
+  font-weight: 700; }
+
+blockquote,
+cite,
+em,
+i {
+  font-style: italic; }
+
+blockquote {
+  margin: 2.5rem; }
+
+blockquote::before {
+  content: "\201C";
+  display: block;
+  font-size: 1.875rem;
+  height: 0;
+  left: -1.25rem;
+  position: relative;
+  top: -0.625rem; }
+
+/* ## Headings
+--------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #333;
+  font-family: Francois One, sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 0.625rem; }
+
+h1 {
+  font-size: 1.9125em; }
+
+h2 {
+  font-size: 1.575em; }
+
+h3 {
+  font-size: 1.38375em; }
+
+h4 {
+  font-size: 1.29375em; }
+
+h5 {
+  font-size: 1.125em; }
+
+h6 {
+  font-size: 1.125em; }
+
 /* ## Objects
 --------------------------------------------- */
 embed,
@@ -532,6 +633,7 @@ body .gform_wrapper form .gform_body ul > li:before {
     display: table; }
 
 .site-inner {
+  background: #f5f5f5;
   clear: both;
   padding-top: 2.5rem;
   max-width: 75rem;
@@ -543,8 +645,13 @@ body .gform_wrapper form .gform_body ul > li:before {
     display: table; }
   @media screen and (min-width: 1300px) {
     .site-inner {
-      padding-left: 0;
-      padding-right: 0; } }
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem; } }
+
+@media screen and (min-width: 75rem) {
+  .wrap {
+    padding-left: 0;
+    padding-right: 0; } }
 
 /* ## Column Widths and Positions
 --------------------------------------------- */
@@ -872,6 +979,21 @@ img.alignright,
 .widget_calendar th {
   text-align: center; }
 
+h1.widgetitle,
+h2.widgettitle {
+  font-size: 3.0375em; }
+
+h3.widgettitle {
+  font-size: 2.025em; }
+
+/*-----------------------
+Home Page Widgets
+------------------------*/
+#home-top,
+#home-bottom,
+#home-middle {
+  margin-bottom: 2.5rem; }
+
 /* ## Featured Content
 --------------------------------------------- */
 .featured-content .entry {
@@ -924,9 +1046,11 @@ img.alignright,
 
 /* # Site Header
 ---------------------------------------------------------------------------------------------------- */
-@media screen and (min-width: 75rem) {
-  .site-header {
-    min-height: 10rem; } }
+.site-header {
+  background-color: #fff; }
+  @media screen and (min-width: 75rem) {
+    .site-header {
+      min-height: 10rem; } }
 
 @media screen and (min-width: 75rem) {
   .site-header .wrap {
@@ -1011,21 +1135,26 @@ nav {
   padding: 20px;
   padding: 2rem;
   text-align: center;
-  visibility: visible; }
+  visibility: visible;
+  width: 3.75rem; }
   @media screen and (min-width: 50rem) {
     .menu-toggle,
     .sub-menu-toggle {
       display: none;
       visibility: hidden; } }
 
-button.menu-toggle,
+button.menu-toggle {
+  background: #333;
+  color: #fff;
+  width: 100%; }
+
 button.sub-menu-toggle {
-  background-color: transparent;
+  background-color: #fff;
   color: #999; }
 
 .sub-menu-toggle {
-  padding: 18px;
-  padding: 1.8rem;
+  padding: 13px;
+  padding: 1.3rem;
   position: absolute;
   right: 0;
   top: 0; }
@@ -1035,6 +1164,14 @@ button.sub-menu-toggle {
 
 .menu-toggle.activated:before {
   content: "\2191"; }
+
+button.menu-secondary {
+  background: #fff;
+  color: #333; }
+
+button.menu-toggle-secondary {
+  background: #fff;
+  color: #333; }
 
 .sub-menu-toggle:before {
   content: "+"; }
@@ -1156,17 +1293,17 @@ button.sub-menu-toggle {
 
 /* ## Primary Navigation
 --------------------------------------------- */
-.nav-primary {
-  background-color: #333; }
-  .nav-primary .genesis-nav-menu a {
-    color: #fff; }
-    .nav-primary .genesis-nav-menu a:hover,
-    .nav-primary .genesis-nav-menu a .current-menu-item > a,
-    .nav-primary .genesis-nav-menu a .current-menu-item > a:hover {
-      color: #e5554e; }
-  .nav-primary .genesis-nav-menu .sub-menu a {
-    color: #333; }
-
+@media screen and (min-width: 50rem) {
+  .nav-primary {
+    background-color: #333; }
+    .nav-primary .genesis-nav-menu a {
+      color: #fff; }
+      .nav-primary .genesis-nav-menu a:hover,
+      .nav-primary .genesis-nav-menu a .current-menu-item > a,
+      .nav-primary .genesis-nav-menu a .current-menu-item > a:hover {
+        color: #e5554e; }
+    .nav-primary .genesis-nav-menu .sub-menu a {
+      color: #333; } }
 /* ## Secondary Navigation
 --------------------------------------------- */
 .nav-secondary {

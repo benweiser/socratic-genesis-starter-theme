@@ -12,6 +12,15 @@
  * @since      1.1
  */
 
+
+//if ( is_admin() ) {
+/** Customizer Options **/
+//include_once( get_stylesheet_directory()  . '/lib/admin/s-customizer.php' );
+
+/**Image Reloaded **/
+//include_once( get_stylesheet_directory() .  '/lib/admin/s-customize-image-reloaded.php' );
+//}
+
 // Initialize
 require_once( get_stylesheet_directory() . '/lib/init.php');
 
@@ -34,7 +43,7 @@ function s_theme_setup() {
 	add_image_size( 'featured-image', 225, 160, TRUE );
 	
 	// Enable Custom Background
-	//add_theme_support( 'custom-background' );
+	add_theme_support( 'custom-background' );
 
 	// Enable Custom Header
 	//add_theme_support('genesis-custom-header');
@@ -109,16 +118,23 @@ function s_register_sidebars() {
 			'id'			=> 'home-top',
 			'name'			=> __( 'Home Top', CHILD_DOMAIN ),
 			'description'	=> __( 'This is the top homepage section.', CHILD_DOMAIN ),
+			'before_title' => '<h2 class="widgettitle">',
+        	'after_title' => '</h2>'
+
 		),
 		array(
 			'id'			=> 'home-left',
 			'name'			=> __( 'Home Left', CHILD_DOMAIN ),
 			'description'	=> __( 'This is the homepage left section.', CHILD_DOMAIN ),
+			'before_title' => '<h3 class="widgettitle">',
+        	'after_title' => '</h3>'
 		),
 		array(
 			'id'			=> 'home-right',
 			'name'			=> __( 'Home Right', CHILD_DOMAIN ),
 			'description'	=> __( 'This is the homepage right section.', CHILD_DOMAIN ),
+			'before_title' => '<h3 class="widgettitle">',
+        	'after_title' => '</h3>'
 		),
 		array(
 			'id'			=> 'home-bottom',
@@ -150,21 +166,36 @@ require_once('lib/scripts.php');
 
 //Add Mobile Menu
 function s_mobile_navigation() {
-	$mobile_menu_args = array(
+/*	$mobile_menu_args = array(
 		'echo' => true,
 	);
 	
 	s_navigation( 'mobile', $mobile_menu_args );
-
+*/
 }
 
 //Add Footer Menu
 function s_footer_navigation() {
-	
+/*	
 	$footer_menu_args = array(
 		'echo' => true,
 		'depth' => 1,
 	);
 	
 	s_navigation( 'footer', $footer_menu_args );
+	*/
 }
+
+	//* Add Google Fonts
+	wp_register_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700,900|Francois+One', array());
+	wp_enqueue_style( 'google-fonts' );
+
+	//* Remove default CSS
+	//wp_dequeue_style( 'genesis-sample-theme' );
+
+	//* Add compiled CSS
+	//wp_register_style( 'genesis-sample-styles', get_stylesheet_directory_uri() . '/style' . $minnified . '.css', array(), CHILD_THEME_VERSION );
+	//wp_enqueue_style( 'genesis-sample-styles' );
+
+	//* Add compiled JS
+	//wp_enqueue_script( 'genesis-sample-scripts', get_stylesheet_directory_uri() . '/js/project' . $minnified . '.js', array( 'jquery' ), CHILD_THEME_VERSION, true );

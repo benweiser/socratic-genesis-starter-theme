@@ -1,8 +1,8 @@
-$lato: Lato, sans-serif;
-
+$paragraph-font: Lato, sans-serif;
+$heading-font: Francois One, sans-serif;
 // Typography
-$base-font-family: $lato;
-$heading-font-family: $base-font-family;
+$base-font-family: $paragraph-font;
+$heading-font-family: $heading-font;
 
 // Font Sizes
 $base-font-size: em(18);

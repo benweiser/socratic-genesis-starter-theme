@@ -111,15 +111,20 @@ function s_init() {
 		include_once( CHILD_LIB_DIR . '/admin/s-inpost-functions.php' );
 
 		/** Custom Logo Uploader **/
-		include_once( CHILD_LIB_DIR . '/admin/s-logo-upload.php' );
+		//include_once( CHILD_LIB_DIR . '/admin/s-logo-upload.php' );
 
-		/**Image Reloaded **/
-		include_once( CHILD_LIB_DIR . '/admin/s-customize-image-reloaded.php' );
+
 		/** Get required plugins */
 	//require_once( CHILD_LIB_DIR . '/plugins/plugins.php' );
 		
 	}
-	
+
+		/** Customizer Options 
+		Must be outside is_admin check because the Customizer displays a theme page**/
+		include_once( CHILD_LIB_DIR . '/admin/s-customizer.php' );
+
+		/**Image Reloaded **/
+		include_once( CHILD_LIB_DIR . '/admin/s-customize-image-reloaded.php' );
 }
 
 add_filter( 'http_request_args', 's_prevent_theme_update', 5, 2 );

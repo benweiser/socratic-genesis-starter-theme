@@ -91,11 +91,10 @@ input[type="search"] {
 
 /* # Defaults
 ---------------------------------------------------------------------------------------------------- */
+ 
 
-/*
-* Typography courtesy of Bitters
-* @import "scss/typography";
-*/
+@import "scss/typography";
+
 
 
 /* ## Objects
@@ -294,32 +293,7 @@ img.alignright,
 
 /* # Widgets
 ---------------------------------------------------------------------------------------------------- */
-
-.widget {
-	word-wrap: break-word;
-}
-
-.widget ol > li {
-	list-style-position: inside;
-	list-style-type: decimal;
-	padding-left: 20px;
-	text-indent: -20px;
-}
-
-.widget li li {
-	border: none;
-	margin: 0 0 0 rem(30);
-	padding: 0;
-}
-
-.widget_calendar table {
-	width: 100%;
-}
-
-.widget_calendar td,
-.widget_calendar th {
-	text-align: center;
-}
+@import "scss/widgets";
 
 /* ## Featured Content
 --------------------------------------------- */
@@ -392,7 +366,7 @@ img.alignright,
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-//	background-color: $dark-gray;
+	background-color: #fff;
 	@include media($large-screen-up) {
 	min-height: rem(160);
 	}

@@ -64,6 +64,7 @@ function s_register_scripts() {
 	/** Common, site specific */
 	wp_register_script( 's-common', CHILD_JS . '/' . s_script_suffix( 'common' ), array( 'jquery' ) , CHILD_THEME_VERSION );
 	
+
 }
 
 /**
@@ -107,3 +108,4 @@ function s_enqueue_scripts() {
 	*/
 }
 
+?>
