@@ -26,6 +26,9 @@ add_action( 'init', 's_register_scripts' );
  */
 function s_register_scripts() {
 	
+	/* Add Google Fonts */
+	wp_register_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700,900|Francois+One', array());
+
 	/**
 	 * Twitter Bootstrap CSS
 	 * @link http://www.bootstrapcdn.com/?v=10292012225705
@@ -76,14 +79,14 @@ function s_register_scripts() {
 function s_enqueue_scripts() {
 	// You can Also register scripts right before enqueing OR simply enqueue the script without registering.
 	// See s_register_scripts() for examples.
-	
+	wp_enqueue_style( 'google-fonts' );
 	// Styles
 	//wp_enqueue_style( 's-twitter-bootstrap' );
 	
 	/**  s-twitter-bootstrap-font-awesome will overwrite most of the styles in the style sheet.
 	 *   Only activate it if you wish to purely use all of the Bootstrap Styles and Font Awesome Together */
 	//wp_enqueue_style( 's-twitter-bootstrap-font-awesome' );
-	
+
 	wp_enqueue_style( 's-font-awesome' );
 	//wp_enqueue_style( 's-font-awesome-cdn' );
 	//wp_enqueue_style( 's-pretty-photo' );

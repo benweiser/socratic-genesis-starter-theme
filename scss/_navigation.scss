@@ -4,22 +4,22 @@
 * the JS in common.min.js
 ----------------------------------------------------------*/
 
+$navigation-break-point: $small-screen;
+
 
 nav {
     display: none;
     position: relative;
     clear: both;
 
-    @include media($small-screen-up) {
+    @include media($navigation-break-point) {
         display: block !important;
     }
-} 
-
-
-
+}
 
 .menu-toggle,
 .sub-menu-toggle {
+    border-radius:0;
     display: block;
     font-size: 20px;
     font-size: 2rem;
@@ -30,9 +30,9 @@ nav {
     padding: 2rem;
     text-align: center;
     visibility: visible;
-    width:rem(60);
+    width: rem(60);
 
-    @include media($small-screen-up) {
+    @include media($navigation-break-point) {
         display: none;
         visibility: hidden;
     }
@@ -40,10 +40,9 @@ nav {
 
 button.menu-toggle {
     background: #333;
-    color:#fff;
-    width:100%;
+    color: #fff;
+    width: 100%;
 }
-
 
 button.sub-menu-toggle {
     background-color: #fff;
@@ -67,13 +66,13 @@ button.sub-menu-toggle {
 }
 
 button.menu-secondary {
-    background:#fff;
-    color:#333;
+    background: #fff;
+    color: #333;
 }
 
 button.menu-toggle-secondary {
-    background:#fff;
-    color:#333;
+    background: #fff;
+    color: #333;
 }
 
 .sub-menu-toggle:before {
@@ -97,6 +96,7 @@ button.menu-toggle-secondary {
         &:hover {
             color: #e5554e;
         }
+
         color: #333;
         display: block;
         padding: rem(30) rem(24);
@@ -105,12 +105,12 @@ button.menu-toggle-secondary {
     // End .genesis-nav-menu a
 
     .menu-item {
-        //	background-color:#f5f5f5;
+        //  background-color:#f5f5f5;
         display: block;
         position: relative;
         text-align: left;
 
-        @include media($small-screen-up) {
+        @include media($navigation-break-point) {
             display: inline-block;
         }
     }
@@ -126,7 +126,7 @@ button.menu-toggle-secondary {
         position: static;
         width: 100%;
 
-        @include media($small-screen-up) {
+        @include media($navigation-break-point) {
             display: block;
             left: -9999px;
             opacity: 0;
@@ -135,6 +135,7 @@ button.menu-toggle-secondary {
             z-index: 99;
         }
 
+
         .sub-menu .sub-menu a {
             background: #fff;
             padding-left: 40px;
@@ -142,7 +143,7 @@ button.menu-toggle-secondary {
         }
 
         a {
-        	background-color: #f5f5f5;
+            background-color: #f5f5f5;
             padding-left: 30px;
             color: #333;
         }
@@ -163,7 +164,7 @@ button.menu-toggle-secondary {
     position: relative;
     border-left: 0;
 
-    @include media($small-screen-up) {
+    @include media($navigation-break-point) {
         background-color: #fff;
         border: 1px solid #eee;
         border-top: none;
@@ -176,7 +177,7 @@ button.menu-toggle-secondary {
 .genesis-nav-menu .sub-menu .sub-menu {
     margin: 0;
 
-    @include media($small-screen-up) {
+    @include media($navigation-break-point) {
         margin: -55px 0 0 199px;
     }
 }
@@ -184,7 +185,7 @@ button.menu-toggle-secondary {
 .genesis-nav-menu .menu-item:hover {
     position: relative;
 
-    @include media($small-screen-up) {
+    @include media($navigation-break-point) {
         position: static;
     }
 }
@@ -222,6 +223,28 @@ button.menu-toggle-secondary {
     padding: 10px 0 0;
 }
 
+
+/*----Carets for large screen navigation--
+------------------------------------------*/
+@include media($navigation-break-point) {
+    .menu-item-has-children > a {
+        &:after {
+            margin-left: 5px;
+            content: "\25BC";
+            font-size: rem(12);
+        }
+    }
+
+    .sub-menu {
+        .menu-item-has-children > a {
+            &:after {
+                content: "\25B6";
+            }
+        }
+    }
+}
+
+
 /* ## Site Header Navigation
 --------------------------------------------- */
 
@@ -239,30 +262,31 @@ button.menu-toggle-secondary {
 
 /* ## Primary Navigation
 --------------------------------------------- */
-@include media($small-screen-up) {
-.nav-primary {
-    background-color: #333;
+@include media($navigation-break-point) {
+    .nav-primary {
+        background-color: #333;
 
-    .genesis-nav-menu {
-        a {
-            &:hover,
-            .current-menu-item > a,
-            .current-menu-item > a:hover {
-                color: #e5554e;
+        .genesis-nav-menu {
+            a {
+                &:hover,
+                .current-menu-item > a,
+                .current-menu-item > a:hover {
+                    color: #e5554e;
+                }
+
+                color: #fff;
             }
 
-            color: #fff;
-        }
-
-        .sub-menu {
-            a {
-            color:#333;
-           
+            .sub-menu {
+                a {
+                    color: #333;
+                }
             }
         }
     }
 }
-}
+
+
 /* ## Secondary Navigation
 --------------------------------------------- */
 

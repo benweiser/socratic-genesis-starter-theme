@@ -166,29 +166,35 @@ require_once('lib/scripts.php');
 
 //Add Mobile Menu
 function s_mobile_navigation() {
-/*	$mobile_menu_args = array(
+	$mobile_menu_args = array(
 		'echo' => true,
 	);
 	
-	s_navigation( 'mobile', $mobile_menu_args );
-*/
+	//s_navigation( 'mobile', $mobile_menu_args );
+
 }
 
 //Add Footer Menu
 function s_footer_navigation() {
-/*	
+	
 	$footer_menu_args = array(
 		'echo' => true,
 		'depth' => 1,
 	);
 	
-	s_navigation( 'footer', $footer_menu_args );
-	*/
+	//s_navigation( 'footer', $footer_menu_args );
+	
 }
 
-	//* Add Google Fonts
-	wp_register_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700,900|Francois+One', array());
-	wp_enqueue_style( 'google-fonts' );
+
+add_theme_support( 'genesis-accessibility', 
+  array( 'headings', 'drop-down-menu', 'search-form', 'skip-links', 'rems' ) 
+);
+
+
+//* Add Google Fonts
+//wp_register_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700,900|Francois+One', array());
+//wp_enqueue_style( 'google-fonts' );
 
 	//* Remove default CSS
 	//wp_dequeue_style( 'genesis-sample-theme' );
