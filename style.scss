@@ -1,4 +1,4 @@
-/* # Socratic 
+/*! # Socratic 
 Theme Name: Socratic
 Theme URI: http://benweiser.com/
 Description: This is the starter theme created for the Genesis Framework.   
@@ -9,7 +9,6 @@ Template Version: 1.0
 License: GPL-2.0+  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 */
-
 
 /* # Table of Contents
 - HTML5 Reset
@@ -56,9 +55,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 - Accesibility
 */
 
-@import "scss/vendor/bourbon/bourbon";
-@import "scss/vendor/neat/neat";
-@import "scss/vendor/base/base";
+
 
 /* # HTML5 Reset
 ---------------------------------------------------------------------------------------------------- */
@@ -74,23 +71,24 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 *,
 input[type="search"] {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing:    border-box;
-	box-sizing:         border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
+@import "scss/vendor/bourbon/bourbon";
+@import "scss/vendor/neat/neat";
+@import "scss/vendor/base/base";
 
 /* ## Float Clearing
 --------------------------------------------- */
 
-@import "scss/clearfixes";
+//@import "scss/clearfixes";
 
 /* # Defaults
 ---------------------------------------------------------------------------------------------------- */
- 
 
 @import "scss/typography";
-
-
 
 /* ## Objects
 --------------------------------------------- */
@@ -99,7 +97,6 @@ input[type="search"] {
 
 /* ## Gallery
 --------------------------------------------- */
-
 
 @import "scss/gallery";
 
@@ -117,7 +114,6 @@ input[type="search"] {
 /* Tables courtesy of Bitters */
 
 //@import "tables";
-
 
 /* # Structure and Layout
 ---------------------------------------------------------------------------------------------------- */
@@ -137,7 +133,7 @@ input[type="search"] {
 /* ## Avatar
 --------------------------------------------- */
 
-@import "scss/avatar";
+//@import "scss/avatar";
 
 /* ## Genesis
 --------------------------------------------- */
@@ -147,7 +143,7 @@ input[type="search"] {
 /* ## Search Form
 --------------------------------------------- */
 
-@import "scss/search";
+//@import "scss/search";
 
 /* ## Titles
 --------------------------------------------- */
@@ -159,7 +155,6 @@ input[type="search"] {
 
 @import "scss/wordpress";
 
-
 /* # Widgets
 ---------------------------------------------------------------------------------------------------- */
 @import "scss/widgets";
@@ -168,7 +163,6 @@ input[type="search"] {
 --------------------------------------------- */
 
 @import "scss/featured";
-
 
 /* # Plugins
 ---------------------------------------------------------------------------------------------------- */
@@ -192,6 +186,7 @@ input[type="search"] {
 ----------------------------------------------- */
 
 @import "scss/navigation";
+
 //@import "scss/mobile-menu";
 
 /* # Content Area
@@ -226,27 +221,68 @@ input[type="search"] {
 ---------------------------------------------- */
 @import "scss/footer";
 
+/* # WooCommerce Specific 
+----------------------------------------------- */
+
+@import "scss/woocommerce";
+
 /* # Accessibility Styles
 ----------------------------------------------- */
 
 @import "scss/accessibility";
 
+/* # Button styles
+----------------------------------------------- */
 
+@import "scss/buttons";
+
+/* # Reusable Components
+----------------------------------------------- */
 
 @import "scss/vendor/base/reusable_components";
 
+
+//************************************
+// 
+// Slick Slider Styles
+// 
+//************************************
+
+
+//@import "scss/vendor/base/partials/slick";
+//@import "scss/vendor/base/partials/slick-theme";
+
+
+/* # JQuery UI Date Picker Styles - Uncomment if using Gravity forms datepicker
+----------------------------------------------- */
+
+//@import "scss/datepicker";
+
+/* # Sticky hiding and revealing top bar
+----------------------------------------------- */
+
+@import "scss/top-bar";
+
+
+
 .page-links {
-	@include clearfix;
+	margin:0 auto;
+    @include clearfix;
 }
 
 .scroll-on-page-link {
-	padding:rem(20);
-	border:1px solid #ddd;
-	min-width:175px;
-	text-align:center;
-	margin-right:rem(40);
-	margin-bottom:$base-spacing;
-	display:inline-block;
+	padding: rem(20);
+    border: 1px solid #ddd;
+	display:block;
 	float:left;
-	font-weight:700;
+	margin:0 auto;
+    min-width: 175px;
+	@include media($medium-screen-up) {
+    text-align: center;
+    margin-right: rem(40);
+    margin-bottom: $base-spacing;
+    display: inline-block;
+    float: left;
+	}
 }
+

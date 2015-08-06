@@ -203,10 +203,10 @@ $(".js-vertical-tab-accordion-heading").click(function(event) {
 // Modals
 // 
 //************************************
-
+/*
 
 $(function() {
-  $("#modal-1").on("change", function() {
+  $("#modal-1, #modal-map").on("change", function() {
     if ($(this).is(":checked")) {
       $("body").addClass("modal-open");
     } else {
@@ -221,7 +221,7 @@ $(function() {
   $(".modal-inner").on("click", function(e) {
     e.stopPropagation();
   });
-});
+}); */
 
 //************************************
 // 
@@ -269,14 +269,63 @@ function parallax(){
 // Slider
 // 
 //************************************
-$('.slider-component').slick({
-   // setting-name: setting-value
-      accessibility:true,
-      arrows:true,
-      adaptiveHeight:true
 
+// Default Settings
+//     accessibility:  true,
+//     arrows:         true,
+//     adaptiveHeight: false,
+//     adaptiveWidth:  false,
+//     autoplay:       false,
+//     autoplaySpeed:  3000,
+//     centerMode:     true,
+//     asNavFor:       "",
+//     appendArrows:   "",
+//     prevArrow:      "",
+//     nextArrow:      "",
+//     centerPadding: '60px',
+//     cssEase:       'ease',
+//     customPaging:     "",
+//     dots:           true,
+//     mobileFirst:    true,
+//     pauseOnHover:   true,
+//     rows:           1,
+ //    slidesToShow:   1,
+//     slidesPerRow:   1,
+//     swipeToSlide:   false,
+//     verticalSwiping:false,
+//     rtl:            false,
+
+$('.centered-horizontal-slides').slick({
+  centerMode: true,
+  centerPadding: '60px',
+  slidesToShow: 1,
+  adaptiveHeight: false,
+  variableWidth: true,
+  dots: true,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
 });
 
+
+$('body').addClass("test");
 
 }); // end ready
 

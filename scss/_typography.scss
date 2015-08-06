@@ -1,7 +1,7 @@
 
 /* ## Typographical Elements
 --------------------------------------------- */
-
+/*
 
 body {
 	background-color: $base-background-color;
@@ -84,7 +84,7 @@ blockquote::before {
 	position: relative;
 	top: rem(-10);
 }
-
+*/
 
 /* ## Headings
 --------------------------------------------- */
@@ -119,4 +119,11 @@ h5 {
 }
 h6 {
   font-size: $base-font-size;
+}
+
+body {
+	background:#fff;
+	@include media($medium-screen-up) {
+		background:#f5f5f5;
+	}
 }

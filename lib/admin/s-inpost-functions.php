@@ -97,6 +97,6 @@ function s_inpost_scripts_save( $post_id, $post ) {
 	/** No sanitization necessary for scripts */
 
 	/** Save custom field data */
-	genesis_save_custom_fields( $data, 's_inpost_scripts_save', 's_inpost_scripts_nonce', $post, $post_id );
+//	genesis_save_custom_fields( $data, 's_inpost_scripts_save', 's_inpost_scripts_nonce', $post, $post_id );
 
 }

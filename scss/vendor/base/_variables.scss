@@ -1,11 +1,12 @@
 $paragraph-font: Lato, sans-serif;
-$heading-font: Francois One, sans-serif;
+$heading-font: $paragraph-font;
 // Typography
 $base-font-family: $paragraph-font;
 $heading-font-family: $heading-font;
+$heading-font-weight:700;
 
 // Font Sizes
-$base-font-size: em(18);
+$base-font-size: rem(16);
 
 // Line height
 $base-line-height: 1.5;
@@ -22,6 +23,7 @@ $blue: #477dca;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
+$paragraph: #444;
 
 
 // Colors
@@ -36,11 +38,15 @@ $error-color: #fbe3e4;
 $notice-color: #e5edf8;
 $success-color: #e6efc2;
 
+$woo-background: #dad8da;
+$woo-text: #515151;
 
 // Font Colors
 $base-background-color: #f5f5f5;
-$base-font-color: $dark-gray;
+$base-font-color: $paragraph;
 $action-color: $blue;
+$muted-color: $woo-background;
+$muted-text: $woo-text;
 
 // Border
 $base-border-color: $light-gray;

@@ -4,8 +4,8 @@
 * the JS in common.min.js
 ----------------------------------------------------------*/
 
-$navigation-break-point: $small-screen;
-
+$navigation-break-point: $large-screen;
+$mobile: new-breakpoint(max-width rem(800) 12);
 
 nav {
     display: none;
@@ -19,15 +19,14 @@ nav {
 
 .menu-toggle,
 .sub-menu-toggle {
-    border-radius:0;
+    border-radius: 0;
     display: block;
     font-size: 20px;
     font-size: 2rem;
     font-weight: 700;
     margin: 0 auto;
     overflow: hidden;
-    padding: 20px;
-    padding: 2rem;
+    padding: rem(10);
     text-align: center;
     visibility: visible;
     width: rem(60);
@@ -39,9 +38,11 @@ nav {
 }
 
 button.menu-toggle {
-    background: #333;
+    background: $medium-gray;
     color: #fff;
-    width: 100%;
+    float:right;
+    border:1px solid $light-gray;
+    border-radius:3px;
 }
 
 button.sub-menu-toggle {
@@ -59,12 +60,25 @@ button.sub-menu-toggle {
 
 .menu-toggle:before {
     content: "\2261";
+//    position:absolute;
+//    right:0;
+//    padding-right:5%;
 }
 
 .menu-toggle.activated:before {
     content: "\2191";
+    position:relative;
 }
 
+.menu-toggle:after {
+//    font-size:18px;
+//    font-weight:300; 
+//    content: "Menu";
+}
+
+.menu-toggle.activated:after {
+    content:"";
+}
 button.menu-secondary {
     background: #fff;
     color: #333;
@@ -88,18 +102,23 @@ button.menu-toggle-secondary {
 
 .genesis-nav-menu {
     clear: both;
-    font-size: 16px;
+    font-size: $base-font-size;
     line-height: 1;
     width: 100%;
 
     a {
         &:hover {
-            color: #e5554e;
+            color: $blue;
         }
 
-        color: #333;
+        color: $base-font-color;
         display: block;
-        padding: rem(30) rem(24);
+        padding: rem(29) rem(24);
+        border-bottom: 1px solid $light-gray;
+
+        @include media($small-screen-up) {
+            border-bottom: 0;
+        }
     }
 
     // End .genesis-nav-menu a
@@ -137,15 +156,38 @@ button.menu-toggle-secondary {
 
 
         .sub-menu .sub-menu a {
-            background: #fff;
-            padding-left: 40px;
-            color: #333;
+            &:hover {
+                color: $blue;
+            }
+
+            @include media($mobile) {
+                padding-left: rem(120);
+                border-color: transparent;
+            }
+        }
+
+        .sub-menu a {
+            @include media($mobile) {
+                padding-left: rem(60);
+                border-color: transparent;
+            }
         }
 
         a {
-            background-color: #f5f5f5;
-            padding-left: 30px;
-            color: #333;
+            &:hover {
+                color: $blue;
+            }
+
+            @include media($mobile) {
+                padding-left: rem(30);
+                color: $base-font-color;
+                border-color: transparent;
+
+                &:before {
+                    content: "\2014";
+                    margin-right: 5px;
+                }
+            }
         }
     }
 
@@ -156,7 +198,7 @@ button.menu-toggle-secondary {
 
 .genesis-nav-menu .current-menu-item > a,
 .genesis-nav-menu .sub-menu .current-menu-item > a:hover {
-    color: #e5554e;
+    color: $blue;
 }
 
 .genesis-nav-menu .sub-menu a {
@@ -223,7 +265,6 @@ button.menu-toggle-secondary {
     padding: 10px 0 0;
 }
 
-
 /*----Carets for large screen navigation--
 ------------------------------------------*/
 @include media($navigation-break-point) {
@@ -262,24 +303,29 @@ button.menu-toggle-secondary {
 
 /* ## Primary Navigation
 --------------------------------------------- */
+
 @include media($navigation-break-point) {
     .nav-primary {
-        background-color: #333;
+        //background-color: #333;
 
         .genesis-nav-menu {
             a {
                 &:hover,
                 .current-menu-item > a,
                 .current-menu-item > a:hover {
-                    color: #e5554e;
+                    color: lighten($blue, 10);
                 }
 
-                color: #fff;
+                color: $action-color;
             }
 
             .sub-menu {
                 a {
                     color: #333;
+
+                    &:hover {
+                        color: $blue;
+                    }
                 }
             }
         }

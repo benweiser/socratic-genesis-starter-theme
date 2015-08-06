@@ -10,7 +10,11 @@ module.exports = function (grunt) {
     },
     // SASS task config
     sass: {
-        dev: {
+        dist: {
+            options : {
+              style: 'compressed'
+            },
+
             files: {
                 // destination         // source file
                 "style.css" : "style.scss"
@@ -32,7 +36,7 @@ browserSync: {
     options: {
       watchTask: true,
       proxy: "www.bw-starter.dev/",
-      tunnel: "mytun" // < Used for iPhone testing
+      tunnel: "tunnel" // < Used for iPhone testing
     }
   }
 }

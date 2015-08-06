@@ -5,13 +5,13 @@
  *
  * This file defines the Child Theme's constants & tells WP not to update.
  *
- * @category   Genesis_Sandbox
+ * @category   Socratic
  * @package    Admin
  * @subpackage Init
- * @author     Travis Smith
+ * @author     Ben Weiser
  * @license    http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
  * @link       http://wpsmith.net/
- * @since      1.1.0
+ * @since      1.0
  */
 
 /** Exit if accessed directly */
@@ -105,15 +105,8 @@ function s_init() {
 		include_once( CHILD_LIB_DIR . '/admin/s-admin-functions.php' );
 		
 		/** New Admin Page */
-		include_once( CHILD_LIB_DIR . '/admin/s-settings.php' );
+		//include_once( CHILD_LIB_DIR . '/admin/s-settings.php' );
 		
-		/** Inpost Metaboxes */
-		include_once( CHILD_LIB_DIR . '/admin/s-inpost-functions.php' );
-
-		/** Custom Logo Uploader **/
-		//include_once( CHILD_LIB_DIR . '/admin/s-logo-upload.php' );
-
-
 		/** Get required plugins */
 	//require_once( CHILD_LIB_DIR . '/plugins/plugins.php' );
 		
@@ -125,6 +118,13 @@ function s_init() {
 
 		/**Image Reloaded **/
 		include_once( CHILD_LIB_DIR . '/admin/s-customize-image-reloaded.php' );
+
+			genesis_register_sidebar( array(
+	'id'            => 'top-bar',
+	'name'          => __( 'Top Bar', CHILD_DOMAIN ),
+	'description'   => __( 'This is a widget area that is the top bar', CHILD_DOMAIN ),
+	) );
+
 }
 
 add_filter( 'http_request_args', 's_prevent_theme_update', 5, 2 );
@@ -149,17 +149,3 @@ function s_prevent_theme_update( $r, $url ) {
 	return $r;
 }
 
-/*
-Add Theme Settings Page
----------------------------------------------------------------------------------------------------- */
-//add_action( 'genesis_admin_menu', 's_add_settings', 5 );
-/**
- * Add the Theme Settings Page
- *
- * @since 1.1.0
- */
-function s_add_settings() {
-	global $_s_settings;
-	
-	$_s_settings = new Genesis_Sandbox_Settings;	 	
-}

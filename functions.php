@@ -24,6 +24,10 @@
 // Initialize
 require_once( get_stylesheet_directory() . '/lib/init.php');
 
+
+
+
+
 add_action( 'genesis_setup', 's_theme_setup', 15 );
 
 //Theme Set Up Function
@@ -41,6 +45,7 @@ function s_theme_setup() {
 	
 	//Custom Image Sizes
 	add_image_size( 'featured-image', 225, 160, TRUE );
+	add_image_size( 'card-image', 559, 160, TRUE );
 	
 	// Enable Custom Background
 	add_theme_support( 'custom-background' );
@@ -62,16 +67,20 @@ function s_theme_setup() {
 		'footer'
 	) );
 
+	remove_action( 'genesis_after_header','genesis_do_nav' ) ;
+ 	add_action( 'genesis_header_right','genesis_do_nav' );
+
+ 	
 	/**
 	 * 07 Footer Widgets
 	 * Add support for 3-column footer widgets
 	 * Change 3 for support of up to 6 footer widgets (automatically styled for layout)
 	 */
-	add_theme_support( 'genesis-footer-widgets', 3 );
+	add_theme_support( 'genesis-footer-widgets', 2 );
 
 	/**
 	 * 08 Genesis Menus
-	 * Genesis Sandbox comes with 4 navigation systems built-in ready.
+	 * Socratic comes with 2 navigation systems built-in ready.
 	 * Delete any menu systems that you do not wish to use.
 	 */
 	add_theme_support(
@@ -79,13 +88,15 @@ function s_theme_setup() {
 		array(
 			'primary'   => __( 'Primary Navigation Menu', CHILD_DOMAIN ), 
 			'secondary' => __( 'Secondary Navigation Menu', CHILD_DOMAIN ),
-			'footer'    => __( 'Footer Navigation Menu', CHILD_DOMAIN ),
-			'mobile'    => __( 'Mobile Navigation Menu', CHILD_DOMAIN ),
 		)
 	);
 	
-	// Add Mobile Navigation
-	add_action( 'genesis_before', 's_mobile_navigation', 5 );
+	/**
+	 * 09 Woocommerce
+	 * Uncomment and use with Genesis WooCommerce Connect
+	 */
+	
+	add_theme_support( 'genesis-connect-woocommerce' );
 	
 	
 	//Enqueue Sandbox Scripts
@@ -110,6 +121,17 @@ function s_theme_setup() {
 	}
 
 } // End of Set Up Function
+
+
+
+add_action('genesis_before', 'bw_hook_top_bar');
+function bw_hook_top_bar(){
+genesis_widget_area( 'top-bar', array(
+			'before' => '<div class="top-bar widget-area"><div class="wrap">',
+			'after' => '</div></div>',
+	) );
+}
+
 
 // Register Sidebars
 function s_register_sidebars() {
@@ -164,37 +186,12 @@ require_once('lib/scripts.php');
  * @uses s_navigation() Sandbox Navigation Helper Function in s-functions.php.
  */
 
-//Add Mobile Menu
-function s_mobile_navigation() {
-	$mobile_menu_args = array(
-		'echo' => true,
-	);
-	
-	//s_navigation( 'mobile', $mobile_menu_args );
-
-}
-
-//Add Footer Menu
-function s_footer_navigation() {
-	
-	$footer_menu_args = array(
-		'echo' => true,
-		'depth' => 1,
-	);
-	
-	//s_navigation( 'footer', $footer_menu_args );
-	
-}
-
 
 add_theme_support( 'genesis-accessibility', 
   array( 'headings', 'drop-down-menu', 'search-form', 'skip-links', 'rems' ) 
 );
 
 
-//* Add Google Fonts
-//wp_register_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700,900|Francois+One', array());
-//wp_enqueue_style( 'google-fonts' );
 
 	//* Remove default CSS
 	//wp_dequeue_style( 'genesis-sample-theme' );
@@ -205,3 +202,46 @@ add_theme_support( 'genesis-accessibility',
 
 	//* Add compiled JS
 	//wp_enqueue_script( 'genesis-sample-scripts', get_stylesheet_directory_uri() . '/js/project' . $minnified . '.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
+
+
+
+/**
+ * Place a cart icon with number of items and total cost in the menu bar.
+ *
+ * Source: http://wordpress.org/plugins/woocommerce-menu-bar-cart/
+ */
+//add_filter('wp_nav_menu_items','sk_wcmenucart', 10, 2);
+function sk_wcmenucart($menu, $args) {
+
+	// Check if WooCommerce is active and add a new item to a menu assigned to Primary Navigation Menu location
+	if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || 'primary' !== $args->theme_location )
+		return $menu;
+
+	ob_start();
+		global $woocommerce;
+		$viewing_cart = __('View your shopping cart', 'your-theme-slug');
+		$start_shopping = __('Start shopping', 'your-theme-slug');
+		$cart_url = $woocommerce->cart->get_cart_url();
+		$shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );
+		$cart_contents_count = $woocommerce->cart->cart_contents_count;
+		$cart_contents = sprintf(_n('%d item', '%d items', $cart_contents_count, 'your-theme-slug'), $cart_contents_count);
+		$cart_total = $woocommerce->cart->get_cart_total();
+		// Uncomment the line below to hide nav menu cart item when there are no items in the cart
+		// if ( $cart_contents_count > 0 ) {
+			if ($cart_contents_count == 0) {
+				$menu_item = '<li class="right"><a class="wcmenucart-contents" href="'. $shop_page_url .'" title="'. $start_shopping .'">';
+			} else {
+				$menu_item = '<li class="right"><a class="wcmenucart-contents" href="'. $cart_url .'" title="'. $viewing_cart .'">';
+			}
+
+			$menu_item .= '<i class="fa fa-shopping-cart"></i> ';
+
+			$menu_item .= $cart_contents.' - '. $cart_total;
+			$menu_item .= '</a></li>';
+		// Uncomment the line below to hide nav menu cart item when there are no items in the cart
+		// }
+		echo $menu_item;
+	$social = ob_get_clean();
+	return $menu . $social;
+
+}

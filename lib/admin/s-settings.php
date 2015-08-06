@@ -5,241 +5,182 @@
  *
  * This file registers all of this child theme's 
  * specific Theme Settings, accessible from
- * Genesis > Sandbox Settings.
+ * Genesis > Contact Details
  *
- * @category   Genesis_Sandbox
+ * @category   Socratic
  * @package    Admin
  * @subpackage Settings
- * @author     Travis Smith
+ * @author     Ben Weiser
  * @license    http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link       http://wpsmith.net/
+ * @link       http://benweiser.com
  * @since      1.1.0
  */
 
 /** Exit if accessed directly */
 if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
  
-/**
- * Registers a new admin page, providing content and corresponding menu item
- * for the Child Theme Settings page.
- *
- * @category    Genesis_Sandbox
- * @since       1.0.0
- */
-class Genesis_Sandbox_Settings extends Genesis_Admin_Boxes {
+
+class S_Settings extends Genesis_Admin_Boxes {
 	
 	/**
 	 * Create an admin menu item and settings page.
 	 * 
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 */
 	function __construct() {
 		
 		// Specify a unique page ID. 
-		$page_id = CHILD_SETTINs_FIELD;
+		$page_id = 'child';
 		
 		// Set it as a child to genesis, and define the menu and page titles
 		$menu_ops = array(
 			'submenu' => array(
 				'parent_slug' => 'genesis',
-				'page_title'  => __( 'Genesis Sandbox Settings', CHILD_DOMAIN ),
-				'menu_title'  => __( 'Genesis Sandbox Settings', CHILD_DOMAIN ),
-				'capability'  => 'manage_options',
+				'page_title'  => 'Genesis - Child Theme Settings',
+				'menu_title'  => 'Child Theme Settings',
 			)
 		);
 		
 		// Set up page options. These are optional, so only uncomment if you want to change the defaults
-		$page_ops = array( 'screen_icon' => 'options-general', );		
+		$page_ops = array(
+		//	'screen_icon'       => 'options-general',
+		//	'save_button_text'  => 'Save Settings',
+		//	'reset_button_text' => 'Reset Settings',
+		//	'save_notice_text'  => 'Settings saved.',
+		//	'reset_notice_text' => 'Settings reset.',
+		);		
 		
 		// Give it a unique settings field. 
-		// You'll access them from genesis_get_option( 'option_name', CHILD_SETTINs_FIELD );
-		$settins_field = CHILD_SETTINs_FIELD;
+		// You'll access them from genesis_get_option( 'option_name', 'child-settings' );
+		$settings_field = 'child-settings';
 		
 		// Set the default values
 		$default_settings = array(
-			'footer_left'  => 'Copyright &copy; ' . date( 'Y' ) . ' All Rights Reserved',
-			'footer_right' => 'Site by <a href="http://www.surefirethemes.com/">SureFire Themes</a>',
+			's_phone'   => '',
+			's_dayweek' => 'Monday - Friday',
+			's_hours'	=> '9am - 5pm',
 		);
 		
 		// Create the Admin Page
-		$this->create( $page_id, $menu_ops, $page_ops, $settins_field, $default_settings );
-
+		$this->create( $page_id, $menu_ops, $page_ops, $settings_field, $default_settings );
 		// Initialize the Sanitization Filter
-		add_action( 'genesis_settins_sanitizer_init', array( $this, 'sanitization_filters' ) );
-		
-		// Add admin script
-		//add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
+		add_action( 'genesis_settings_sanitizer_init', array( $this, 'sanitization_filters' ) );
+			
 	}
-
 	/** 
 	 * Set up Sanitization Filters
 	 *
 	 * See /lib/classes/sanitization.php for all available filters.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 */	
 	function sanitization_filters() {
 		
-		genesis_add_option_filter(
-			'no_html', 
-			$this->settins_field,
-			array() // Enter options here as an array
-		);
-		
-		genesis_add_option_filter(
-			'safe_html', 
-			$this->settins_field,
-			array( // Enter options here as an array
-				'footer_left',
-				'footer_right',
-			)
-		);
-		
-		genesis_add_option_filter(
-			'one_zero',
-			$this->settins_field,
-			array( // Enter options here as an array
-				'move_nav',
-				'move_subnav',
-				'footer_left_nav',
-				'footer_right_nav',
-			)
-		);
-		
-		genesis_add_option_filter(
-			'requires_unfiltered_html',
-			$this->settins_field,
+		genesis_add_option_filter( 'no_html', $this->settings_field,
 			array(
-			) // Enter options here as an array
-		);
-		
+				's_phone',
+				's_alt_phone',
+				's_fax',
+				's_street',
+				's_suite',
+				's_city',
+				's_state',
+				's_zip',
+				's_country',
+				's_hours',
+				's_daysweek',
+
+
+			) );
 	}
 	
-	/** 
-	 * Add admin script
+	/**
+	 * Set up Help Tab
+	 * Genesis automatically looks for a help() function, and if provided uses it for the help tabs
+	 * @link http://wpdevel.wordpress.com/2011/12/06/help-and-screen-api-changes-in-3-3/
 	 *
-	 * @since 1.1.0
-	 */	
-	function s_scripts() {
-		if ( genesis_is_menu_page( $this->page_id ) ) {
-			wp_register_script( 'sandbox-admin', CHILD_LIB . '/js/' . s_script_suffix( 'admin' ), array( 'jquery' ) , CHILD_THEME_VERSION );
-		}
-	}
+	 * @since 1.0.0
+	 */
+	 function help() {
+	 	$screen = get_current_screen();
+		$screen->add_help_tab( array(
+			'id'      => 'sample-help', 
+			'title'   => 'Sample Help',
+			'content' => '<p>Help content goes here.</p>',
+		) );
+	 }
 	
 	/**
 	 * Register metaboxes on Child Theme Settings page
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 *
-	 * @see s_general_settings() Callback for child theme settings
-	 * @see s_footer_settings() Callback for footer settings
+	 * @see Child_Theme_Settings::contact_information() Callback for contact information
 	 */
 	function metaboxes() {
 		
-		add_meta_box( 'gs-footer-settings', __( 'Genesis Sandbox Footer Settings', CHILD_DOMAIN ) , array( $this, 's_footer_settings' ), $this->pagehook, 'main', 'high' );
-				
+		add_meta_box('contact-information', 'Contact Information', array( $this, 'contact_information' ), $this->pagehook, 'main', 'high');
+		
 	}
 	
 	/**
-	 * Register contextual help on Child Theme Settings page
+	 * Callback for Contact Information metabox
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 *
+	 * @see Child_Theme_Settings::metaboxes()
 	 */
-	function help() {	
-		global $my_admin_page;
-		$screen = get_current_screen();
+	function contact_information() {
 		
-		if ( $screen->id != $this->pagehook )
-			return;
-		
-		$tab1_help =
-			'<h3>' . __( 'Home Settings', CHILD_DOMAIN ) . '</h3>' .
-			'<p>' . __( 'The home page features the Genesis Grid loop that can be set in this section. To set the number of full content posts, enter the number under Number of Full Posts. To set the number of grid or other posts, enter a numer by Number of Other Posts.', CHILD_DOMAIN ) . '</p>';
-		$tab2_help =
-			'<h3>' . __( 'Post Formats', CHILD_DOMAIN ) . '</h3>' .
-			'<p>' . __( 'Sandbox features the ability to turn on post formats for the entire site. Simply, check the checkbox by Enable post formats globally. However, this will not affect the portfolio theme.', CHILD_DOMAIN ) . '</p>';
-		$tab3_help =
-			'<h3>' . __( 'Footer Widgets', CHILD_DOMAIN ) . '</h3>' .
-			'<p>' . __( 'Sandbox features the ability to set the number of footer widgets that you would like to have. First, you must enable footer widgets by checking the Add footer widgets checkbox. Then enter the number of footer widgets you would like to have. Finally, you can optionally remove footer widgets from the home page by checking the checkbox by Hide Footer Widgets on Home Page.', CHILD_DOMAIN ) . '</p>';
-		$tab4_help =
-			'<h3>' . __( 'Portfolio Templates', CHILD_DOMAIN ) . '</h3>' .
-			'<p>' . __( 'Sandbox\'s features two portfolio templates: the category archive for portfolio and page template for portfolio. Since some people may want to have pages called Portfolio and not use the Portfolio template, I have decided to name the template page_portfolio.php instead of the page-portfolio.php which would force users to use the template based on the WordPress hierarchy. If you prefer to use another category name other than portfolio, please rename the file category-portfolio.php to category-{your-category-slug}.php. For more information see the WordPress ', CHILD_DOMAIN ) .
-			'<a href="http://codex.wordpress.org/Category_Templates" target="_blank">' . __( 'Category Templates', CHILD_DOMAIN ) . '.</a>' .
-			__( 'Sandbox\'s portfolio options apply to both templates as appropriate.', CHILD_DOMAIN ) . '</p>' .
-			'<h3>' . __( 'Portfolio Options', CHILD_DOMAIN ) . '</h3>' .
-			'<p>' . __( 'Sandbox\'s portfolio options contain the typical content archive settings including category designation, category exclusion, post exclusion, number of posts, content type, content limit, formatting tags and the read more text.', CHILD_DOMAIN ) .
-			
-			'<a href="http://codex.wordpress.org/Category_Templates" target="_blank">' . __( 'Category Templates', CHILD_DOMAIN ) . '.</a>' .
-			__( 'Portfolio Settings', CHILD_DOMAIN ) . '</p>';
-		
-		
-		$screen->add_help_tab(
-			array(
-				'id'	=> $this->pagehook . '-tab1',
-				'title'	=> __( 'Home Settings', CHILD_DOMAIN ),
-				'content'	=> $tab1_help,
-			)
-		);
-		$screen->add_help_tab(
-			array(
-				'id'	=> $this->pagehook . '-tab2',
-				'title'	=> __( 'Post Formats', CHILD_DOMAIN ),
-				'content'	=> $tab2_help,
-			)
-		);
-		$screen->add_help_tab(
-			array(
-				'id'	=> $this->pagehook . '-tab3',
-				'title'	=> __( 'Footer Widgets', CHILD_DOMAIN ),
-				'content'	=> $tab3_help,
-			)
-		);
-		$screen->add_help_tab(
-			array(
-				'id'	=> $this->pagehook . '-tab4',
-				'title'	=> __( 'Portfolio Settings', CHILD_DOMAIN ),
-				'content'	=> $tab4_help,
-			)
-		);
-		
-		// Add Genesis Sidebar
-		$screen->set_help_sidebar(
-			'<p><strong>' . __( 'For more information:', CHILD_DOMAIN ) . '</strong></p>'.
-			'<p><a href="' . __( 'http://www.studiopress.com/support', CHILD_DOMAIN ) . '" target="_blank" title="' . __( 'Support Forums', CHILD_DOMAIN ) . '">' . __( 'Support Forums', CHILD_DOMAIN ) . '</a></p>'.
-			'<p><a href="' . __( 'http://wpsmith.net/genesis-plugins', CHILD_DOMAIN ) . '" target="_blank" title="' . __( 'Genesis Plugins', CHILD_DOMAIN ) . '">' . __( 'Genesis Plugins', CHILD_DOMAIN ) . '</a></p>'.
-			'<p><a href="' . __( 'http://wpsmith.net/category/genesis/', CHILD_DOMAIN ) . '" target="_blank" title="' . __( 'Genesis Tutorials by WPSmith', CHILD_DOMAIN ) . '">' . __( 'Genesis Tutorials by WPSmith', CHILD_DOMAIN ) . '</a></p>'
-        );
-	}
-		
-	
-	/**
-	 * Callback for Sandbox General Settings metabox
-	 *
-	 * @since 1.1.0
-	 *
-	 * @see Genesis_Sandbox_Settings::metaboxes()
-	 */
-	function s_footer_settings() { 
-		/**
-		 * Add HTML
-		 * For name, use echo $this->get_field_name( 'option' );
-		 * For id, use echo $this->get_field_id( 'option' );
-		 * For value, use echo $this->get_field_value( 'option' );
-		 */
-		 
-		echo '<h4>Footer Left:</h4>';
-		?>
-		<p><input type="checkbox" name="<?php echo $this->get_field_name( 'footer_left_nav' ); ?>" id="<?php echo $this->get_field_id( 'footer_left_nav' ); ?>" value="1" <?php checked( 1, $this->get_field_value( 'footer_left_nav' ) ); ?> /> <label for="<?php echo $this->get_field_name( 'footer_left_nav' ); ?>"><?php _e( 'Use footer navigation here?', CHILD_DOMAIN ); ?></label></p>
-		<?php
-		wp_editor( $this->get_field_value( 'footer_left' ), $this->get_field_id( 'footer_left' ), array( 'textarea_rows' => 5 ) );	
+		echo '<p>Phone Number:<br />';
+		echo '<input type="text" name="' . $this->get_field_name( 's_phone' ) . '" id="' . $this->get_field_id( 's_phone' ) . '" value="' . esc_attr( $this->get_field_value( 's_phone' ) ) . '" size="50" />';
+		echo '</p>';
 
-		echo '<h4>Footer Right:</h4>';
-		?>
-		<p><input type="checkbox" name="<?php echo $this->get_field_name( 'footer_right_nav' ); ?>" id="<?php echo $this->get_field_id( 'footer_right_nav' ); ?>" value="1" <?php checked( 1, $this->get_field_value( 'footer_right_nav' ) ); ?> /> <label for="<?php echo $this->get_field_name( 'footer_right_nav' ); ?>"><?php _e( 'Use footer navigation here?', CHILD_DOMAIN ); ?></label></p>
-		<?php
-		wp_editor( $this->get_field_value( 'footer_right' ), $this->get_field_id( 'footer_right' ), array( 'textarea_rows' => 5 ) ); 
-		 
-	}
+		echo '<p>Secondary Phone Number:<br />';
+		echo '<input type="text" name="' . $this->get_field_name( 's_alt_phone' ) . '" id="' . $this->get_field_id( 's_alt_phone' ) . '" value="' . esc_attr( $this->get_field_value( 's_alt_phone' ) ) . '" size="50" />';
+		echo '</p>';
+
+	
+		echo '<p>Fax Number:<br />';
+		echo '<input type="text" name="' . $this->get_field_name( 's_fax' ) . '" id="' . $this->get_field_id( 's_fax' ) . '" value="' . esc_attr( $this->get_field_value( 's_fax' ) ) . '" size="50" />';
+		echo '</p>';
+
+		echo '<p>Street Address:<br />';
+		echo '<input type="text" name="' . $this->get_field_name( 's_street' ) . '" id="' . $this->get_field_id( 's_street' ) . '" value="' . esc_attr( $this->get_field_value( 's_street' ) ) . '" size="50" />';
+		echo '</p>';
+
+		echo '<p>Suite #:<br />';
+		echo '<input type="text" name="' . $this->get_field_name( 's_suite' ) . '" id="' . $this->get_field_id( 's_suite' ) . '" value="' . esc_attr( $this->get_field_value( 's_suite' ) ) . '" size="50" />';
+		echo '</p>';
+
+
+		echo '<p>City:<br />';
+		echo '<input type="text" name="' . $this->get_field_name( 's_city' ) . '" id="' . $this->get_field_id( 's_city' ) . '" value="' . esc_attr( $this->get_field_value( 's_city' ) ) . '" size="50" />';
+		echo '</p>';
+
+
+
+		echo '<p>State Or Province:<br />';
+		echo '<input type="text" name="' . $this->get_field_name( 's_state' ) . '" id="' . $this->get_field_id( 's_state' ) . '" value="' . esc_attr( $this->get_field_value( 's_state' ) ) . '" size="50" />';
+		echo '</p>';
+
+		echo '<p>Zip:<br />';
+		echo '<input type="text" name="' . $this->get_field_name( 's_zip' ) . '" id="' . $this->get_field_id( 's_zip' ) . '" value="' . esc_attr( $this->get_field_value( 's_zip' ) ) . '" size="50" maxlength="5"/>';
+		echo '</p>';
+
+
+		echo '<p>Hours Of Operation:<br />';
+		echo '<input type="text" name="' . $this->get_field_name( 's_hours' ) . '" id="' . $this->get_field_id( 's_hours' ) . '" value="' . esc_attr( $this->get_field_value( 's_hours' ) ) . '" size="50"/>';
+		echo '</p>';
+
+		echo '<p>Open (Days Of The Week):<br />';
+		echo '<input type="text" name="' . $this->get_field_name( 's_daysweek' ) . '" id="' . $this->get_field_id( 's_daysweek' ) . '" value="' . esc_attr( $this->get_field_value( 's_daysweek' ) ) . '" size="50" />';
+		echo '</p>';	
+	
+
+		}
+	
 	
 }
+
+

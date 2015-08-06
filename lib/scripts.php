@@ -26,15 +26,18 @@ add_action( 'init', 's_register_scripts' );
  */
 function s_register_scripts() {
 	
+	remove_action( 'genesis_meta', 'genesis_load_stylesheet' );
+	add_action( 'wp_enqueue_scripts', 'genesis_enqueue_main_stylesheet', 45 );
+	
 	/* Add Google Fonts */
-	wp_register_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700,900|Francois+One', array());
+	wp_register_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700,900|Open+Sans:400,600,700,900|Fjalla+One', array());
 
 	/**
 	 * Twitter Bootstrap CSS
 	 * @link http://www.bootstrapcdn.com/?v=10292012225705
 	 * @link http://twitter.github.com/bootstrap/
 	 */
-	wp_register_style( 's-twitter-bootstrap', CHILD_CSS . '/' . s_script_suffix( 'bootstrap', 'css' ), array(), '1.0.0' );
+	//wp_register_style( 's-twitter-bootstrap', CHILD_CSS . '/' . s_script_suffix( 'bootstrap', 'css' ), array(), '1.0.0' );
 	//wp_register_style( 's-twitter-bootstrap-cdn', '//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css', array(), '2.2.2' );
 	
 	// Twitter Bootstrap CSS (Font Awesome version)
@@ -46,7 +49,7 @@ function s_register_scripts() {
 	 * @link http://twitter.github.com/bootstrap/
 	 */
 	//wp_register_script( 's-twitter-bootstrap', CHILD_JS . '/' . s_script_suffix( 'bootstrap', 'js' ), array( 'jquery' ), '2.2.2' );
-	wp_register_script( 's-twitter-bootstrap-cdn', '//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js', array( 'jquery' ), '2.2.2' );
+	//wp_register_script( 's-twitter-bootstrap-cdn', '//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js', array( 'jquery' ), '2.2.2' );
 	
 	/**
 	 * Font Awesome
@@ -65,7 +68,7 @@ function s_register_scripts() {
 	wp_register_script( 's-pretty-photo', CHILD_JS . '/' . s_script_suffix( 'jquery.prettyPhoto', 'js' ), array( 'jquery' ), '3.1.4' );
 	
 	/** Common, site specific */
-	wp_register_script( 's-common', CHILD_JS . '/' . s_script_suffix( 'common' ), array( 'jquery' ) , CHILD_THEME_VERSION );
+	wp_register_script( 's-common', CHILD_JS . '/' . s_script_suffix( 'common' ), array( 'jquery' ) , CHILD_THEME_VERSION, true );
 	
 
 }
@@ -95,7 +98,7 @@ function s_enqueue_scripts() {
 	//wp_enqueue_script( 's-twitter-bootstrap' );
 	//wp_enqueue_script( 's-pretty-photo' );
 	//add_action( 'wp_footer', 's_init_pretty_photo' );
-	wp_enqueue_script( 's-common' );
+
 	
 	// Localize Script
 	/*
@@ -109,6 +112,6 @@ function s_enqueue_scripts() {
 	// wp_localize_script( REGISTERED-HANDLE, OBJECT_NAME, OBJECT_DATA );
 	wp_localize_script( 's-common-scripts', 'gs', $l10n_args );
 	*/
+	wp_enqueue_script( 's-common' );
 }
 
-?>
