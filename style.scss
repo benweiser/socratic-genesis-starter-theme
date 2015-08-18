@@ -103,16 +103,18 @@ input[type="search"] {
 /* ## Forms
 --------------------------------------------- */
 
-/* Forms courtesy of Bitters */
-
+/* Forms courtesy of Bitters, Genesis Sample theme defaults commented out below */
 //@import "scss/forms";
+
+
+/* Here we load default gravity form styles to reduce HTTP requests and allow better control over form styles
+Comment out if you are not using Gravity Forms */
 @import "scss/gravityforms";
 
 /* ## Tables
 --------------------------------------------- */
 
-/* Tables courtesy of Bitters */
-
+/* Tables courtesy of Bitters, Genesis Sample theme defaults commented out below */
 //@import "tables";
 
 /* # Structure and Layout
@@ -256,7 +258,7 @@ input[type="search"] {
 /* # JQuery UI Date Picker Styles - Uncomment if using Gravity forms datepicker
 ----------------------------------------------- */
 
-//@import "scss/datepicker";
+@import "scss/datepicker";
 
 /* # Sticky hiding and revealing top bar
 ----------------------------------------------- */

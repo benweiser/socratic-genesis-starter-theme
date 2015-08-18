@@ -46,7 +46,38 @@ function s_home_widgets() {
                         'after'  => '</div><!-- end #home-top -->',
                 ) 
         );
+
+        if (is_active_sidebar('home-middle-1') || is_active_sidebar('home-middle-2') || is_active_sidebar('home-middle-3') ) {
+        echo '<div id="home-middle" class="home-panel">';
+
+             genesis_widget_area( 
+                'home-middle-1', 
+                array(
+                        'before' => '<div id="home-middle-1"><div class="home-widget widget-area">', 
+                        'after' => '</div></div><!-- end #home-middle-1 -->',
+                ) 
+        );
+     genesis_widget_area( 
+                'home-middle-2', 
+                array(
+                        'before' => '<div id="home-middle-2"><div class="home-widget widget-area">', 
+                        'after' => '</div></div><!-- end #home-middle-2 -->',
+                ) 
+        );
+     genesis_widget_area( 
+                'home-middle-3', 
+                array(
+                        'before' => '<div id="home-middle-3"><div class="home-widget widget-area">', 
+                        'after' => '</div></div><!-- end #home-middle-3 -->',
+                ) 
+        );
+
+
+        echo '</div>';
+
+        }
         
+        if (is_active_sidebar('home-left') || is_active_sidebar('home-right')) {
         echo '<div id="home-middle" class="home-panel">';
         genesis_widget_area( 
                 'home-left', 
@@ -64,6 +95,7 @@ function s_home_widgets() {
                 ) 
         );
         echo '</div>';
+        }
         
 
         genesis_widget_area( 
@@ -75,21 +107,6 @@ function s_home_widgets() {
         );                              
 }
 
-add_action('genesis_after_header', 's_parallax_entry');
-function s_parallax_entry(){
-        ?>
-        <section id="js-parallax-window" class="parallax-window">
-        <div class="parallax-static-content">
-            <h1>Stop worrying about hosting, search engines, landing pages, contact forms, eCommerce.</h1>
-            <p>We remove the headache of building and maintaining your website and help you concentrate on using it to grow your business. Focus on what's important.</p>
-            <p><strong>Generate leads. Make sales.         <?php echo genesis_get_option( 's_hours', 'child-settings' ); ?></strong></p>
-            <p><strong>Our Phone number is <?php echo genesis_get_option( 's_phone', 'child-settings' ); ?></strong> and our fax number is <strong><?php echo genesis_get_option( 's_fax', 'child-settings' ); ?></strong></p>
-            <a class="button" href="javascript:;">Get started</a>
 
-        </div>
-        <div id="js-parallax-background" class="parallax-background"></div>
-    </section>
-<?php
-}
 
 genesis();

@@ -248,26 +248,6 @@ function s_theme_files_to_edit() {
 
 }
 
-/*
- * Usage for a custom post type named 'movies':
- * unregister_post_type( 'movies' );
- *
- * Usage for the built in 'post' post type:
- * unregister_post_type( 'post', 'edit.php' );
- *
- * To be used on admin_menu hook.
-*/
-function s_unregister_post_type( $post_type, $slug = '' ){
-	
-	global $wp_post_types;
-	
-	if ( isset( $wp_post_types[ $post_type ] ) ) {
-            unset( $wp_post_types[ $post_type ] );
-        	
-            $slug = ( !$slug ) ? 'edit.php?post_type=' . $post_type : $slug;
-            remove_menu_page( $slug );
-	}
-}
 
 
 /**
@@ -378,6 +358,10 @@ function s_header_inline_logo( $title, $inside, $wrap ) {
 
 
 }
+
+/** Reposition the breadcrumbs */
+remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
+add_action( 'genesis_before_content', 'genesis_do_breadcrumbs' );
 
 
 

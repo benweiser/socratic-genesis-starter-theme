@@ -30,6 +30,7 @@ nav {
     text-align: center;
     visibility: visible;
     width: rem(60);
+    line-height:.9;
 
     @include media($navigation-break-point) {
         display: none;
@@ -40,9 +41,12 @@ nav {
 button.menu-toggle {
     background: $medium-gray;
     color: #fff;
-    float:right;
-    border:1px solid $light-gray;
-    border-radius:3px;
+    float: right;
+    border-radius: 3px;
+    margin:rem(24) 0 0;
+    padding:rem(10);
+    text-align:center;
+    width:rem(48);
 }
 
 button.sub-menu-toggle {
@@ -60,25 +64,25 @@ button.sub-menu-toggle {
 
 .menu-toggle:before {
     content: "\2261";
-//    position:absolute;
-//    right:0;
-//    padding-right:5%;
+    margin:0 auto;
+    text-align:center;
 }
 
 .menu-toggle.activated:before {
     content: "\2191";
-    position:relative;
+    position: relative;
 }
 
 .menu-toggle:after {
-//    font-size:18px;
-//    font-weight:300; 
-//    content: "Menu";
+    //    font-size:18px;
+    //    font-weight:300; 
+    //    content: "Menu";
 }
 
 .menu-toggle.activated:after {
-    content:"";
+    content: "";
 }
+
 button.menu-secondary {
     background: #fff;
     color: #333;
@@ -96,6 +100,7 @@ button.menu-toggle-secondary {
 .sub-menu-toggle.activated:before {
     content: "-";
 }
+
 
 /* End Mobile Menu Specific Styles
 ----------------------------------*/
@@ -116,7 +121,7 @@ button.menu-toggle-secondary {
         padding: rem(29) rem(24);
         border-bottom: 1px solid $light-gray;
 
-        @include media($small-screen-up) {
+        @include media($large-screen-up) {
             border-bottom: 0;
         }
     }
@@ -294,7 +299,9 @@ button.menu-toggle-secondary {
 }
 
 .site-header .sub-menu .sub-menu {
+    @include media($large-screen-up) {
     margin-top: -56px;
+    }
 }
 
 .site-header .genesis-nav-menu li li {

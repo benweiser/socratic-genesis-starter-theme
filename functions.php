@@ -70,13 +70,17 @@ function s_theme_setup() {
 	remove_action( 'genesis_after_header','genesis_do_nav' ) ;
  	add_action( 'genesis_header_right','genesis_do_nav' );
 
+/* Remove layouts which are horrible for UX */
+	genesis_unregister_layout( 'content-sidebar-sidebar' );
+	genesis_unregister_layout( 'sidebar-sidebar-content' );
+	genesis_unregister_layout( 'sidebar-content-sidebar' );
  	
 	/**
 	 * 07 Footer Widgets
 	 * Add support for 3-column footer widgets
 	 * Change 3 for support of up to 6 footer widgets (automatically styled for layout)
 	 */
-	add_theme_support( 'genesis-footer-widgets', 2 );
+	add_theme_support( 'genesis-footer-widgets', 3 );
 
 	/**
 	 * 08 Genesis Menus
@@ -143,6 +147,27 @@ function s_register_sidebars() {
 			'before_title' => '<h2 class="widgettitle">',
         	'after_title' => '</h2>'
 
+		),
+		array(
+			'id'			=> 'home-middle-1',
+			'name'			=> __( 'Home Middle 1', CHILD_DOMAIN ),
+			'description'	=> __( 'This is the homepage middle 1.', CHILD_DOMAIN ),
+			'before_title' => '<h3 class="widgettitle">',
+        	'after_title' => '</h3>'
+		),
+		array(
+			'id'			=> 'home-middle-2',
+			'name'			=> __( 'Home Middle 2', CHILD_DOMAIN ),
+			'description'	=> __( 'This is the homepage middle 2.', CHILD_DOMAIN ),
+			'before_title' => '<h3 class="widgettitle">',
+        	'after_title' => '</h3>'
+		),
+		array(
+			'id'			=> 'home-middle-3',
+			'name'			=> __( 'Home Middle 3', CHILD_DOMAIN ),
+			'description'	=> __( 'This is the homepage middle 3.', CHILD_DOMAIN ),
+			'before_title' => '<h3 class="widgettitle">',
+        	'after_title' => '</h3>'
 		),
 		array(
 			'id'			=> 'home-left',
@@ -245,3 +270,4 @@ function sk_wcmenucart($menu, $args) {
 	return $menu . $social;
 
 }
+
