@@ -53,6 +53,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 - Footer Widgets
 - Site Footer
 - Accesibility
+- Buttons
+- Masonry
+- Front Page Styles
 */
 
 
@@ -90,8 +93,16 @@ input[type="search"] {
 
 @import "scss/typography";
 
+
+/* # Reusable Components
+----------------------------------------------- */
+
+@import "scss/vendor/base/reusable_components";
+
+
 /* ## Objects
 --------------------------------------------- */
+
 
 @import "scss/objects";
 
@@ -238,10 +249,17 @@ Comment out if you are not using Gravity Forms */
 
 @import "scss/buttons";
 
-/* # Reusable Components
+
+/* # Masonry
+----------------------------------------------- */
+@import "scss/masonry";
+
+
+/* # Front page styles
 ----------------------------------------------- */
 
-@import "scss/vendor/base/reusable_components";
+@import "scss/front-page";
+
 
 
 //************************************

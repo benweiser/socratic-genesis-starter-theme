@@ -46,8 +46,14 @@
     }
 }
 
-.content-sidebar, .sidebar-content {
+.sidebar-content {
     .sidebar {
+        float:left;
+    }
+}
+
+.content-sidebar {
+    .content {
         float:left;
     }
 }

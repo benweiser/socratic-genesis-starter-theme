@@ -101,7 +101,6 @@ h5,
 h6 {
 	color: $base-font-color;
 	font-family: $heading-font-family;
-	font-weight: 400;
 	line-height: $heading-line-height;
 	margin: 0 0 rem(10);
 }
@@ -123,6 +122,14 @@ h5 {
 }
 h6 {
   font-size: $base-font-size;
+}
+
+h1, h2 {
+	font-weight:700;
+}
+
+h3, h4, h5, h6 {
+	font-weight:400;
 }
 
 body {

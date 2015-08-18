@@ -60,7 +60,7 @@ function s_theme_setup() {
 	// Add support for structural wraps
 	add_theme_support( 'genesis-structural-wraps', array(
 		'header',
-		'nav',
+	//	'nav',
 		'subnav',
 	//	'inner',
 		'footer-widgets',
@@ -80,7 +80,7 @@ function s_theme_setup() {
 	 * Add support for 3-column footer widgets
 	 * Change 3 for support of up to 6 footer widgets (automatically styled for layout)
 	 */
-	add_theme_support( 'genesis-footer-widgets', 3 );
+	add_theme_support( 'genesis-footer-widgets', 2 );
 
 	/**
 	 * 08 Genesis Menus

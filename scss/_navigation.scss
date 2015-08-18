@@ -30,7 +30,7 @@ nav {
     text-align: center;
     visibility: visible;
     width: rem(60);
-    line-height:.9;
+    line-height: .9;
 
     @include media($navigation-break-point) {
         display: none;
@@ -39,14 +39,13 @@ nav {
 }
 
 button.menu-toggle {
-    background: $medium-gray;
     color: #fff;
     float: right;
     border-radius: 3px;
-    margin:rem(24) 0 0;
-    padding:rem(10);
-    text-align:center;
-    width:rem(48);
+    margin: rem(24) 0 0;
+    padding: rem(10);
+    text-align: center;
+    width: rem(48);
 }
 
 button.sub-menu-toggle {
@@ -62,15 +61,15 @@ button.sub-menu-toggle {
     top: 0;
 }
 
-.menu-toggle:before {
-    content: "\2261";
-    margin:0 auto;
-    text-align:center;
+.menu-toggle:after {
+    // content: "\2261";
+    //  margin:0 auto;
+    //  text-align:center;
 }
 
 .menu-toggle.activated:before {
-    content: "\2191";
-    position: relative;
+    //   content: "\2191";
+    //    position: relative;
 }
 
 .menu-toggle:after {
@@ -101,6 +100,106 @@ button.menu-toggle-secondary {
     content: "-";
 }
 
+.menu-toggle {
+    width: 50px;
+    height: 55px;
+    position: relative;
+    margin: rem(16) 0 0;
+    float: right;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+
+    span {
+        display: block;
+        position: absolute;
+        height: 6px;
+        width: 100%;
+        background: $dark-gray;
+        border-radius: 9px;
+        opacity: 1;
+        left: 0;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .25s ease-in-out;
+        -moz-transition: .25s ease-in-out;
+        -o-transition: .25s ease-in-out;
+        transition: .25s ease-in-out;
+    }
+
+    /* Icon 4 */
+
+    span:nth-child(1) {
+        top: 0px;
+        -webkit-transform-origin: left center;
+        -moz-transform-origin: left center;
+        -o-transform-origin: left center;
+        transform-origin: left center;
+    }
+
+    span:nth-child(2) {
+        top: 14px;
+        -webkit-transform-origin: left center;
+        -moz-transform-origin: left center;
+        -o-transform-origin: left center;
+        transform-origin: left center;
+    }
+
+    span:nth-child(3) {
+        top: 28px;
+        -webkit-transform-origin: left center;
+        -moz-transform-origin: left center;
+        -o-transform-origin: left center;
+        transform-origin: left center;
+    }
+
+    .menu {
+        &:before {
+            top: 42px;
+            position: absolute;
+            color: #555;
+            font-size: 14px;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+            content: "Menu";
+            left: 0;
+            padding: 0 5%;
+        }
+    }
+}
+
+.open span:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 0px;
+    left: 2px;
+}
+
+.open span:nth-child(2) {
+    width: 0%;
+    opacity: 0;
+}
+
+.open span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 36px;
+    left: 2px;
+}
 
 /* End Mobile Menu Specific Styles
 ----------------------------------*/
@@ -110,6 +209,9 @@ button.menu-toggle-secondary {
     font-size: $base-font-size;
     line-height: 1;
     width: 100%;
+    font-family: $heading-font-family;
+    text-transform: uppercase;
+    font-weight: 700;
 
     a {
         &:hover {
@@ -118,11 +220,12 @@ button.menu-toggle-secondary {
 
         color: $base-font-color;
         display: block;
-        padding: rem(29) rem(24);
+        padding: rem(29) 0 rem(24);
         border-bottom: 1px solid $light-gray;
 
         @include media($large-screen-up) {
             border-bottom: 0;
+            padding: rem(29) rem(24);
         }
     }
 
@@ -300,7 +403,7 @@ button.menu-toggle-secondary {
 
 .site-header .sub-menu .sub-menu {
     @include media($large-screen-up) {
-    margin-top: -56px;
+        margin-top: -56px;
     }
 }
 
@@ -313,8 +416,6 @@ button.menu-toggle-secondary {
 
 @include media($navigation-break-point) {
     .nav-primary {
-        //background-color: #333;
-
         .genesis-nav-menu {
             a {
                 &:hover,
