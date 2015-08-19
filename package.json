@@ -10,6 +10,7 @@
     "grunt-contrib-watch": "^0.6.1"
   },
   "devDependencies": {
+    "grunt-autoprefixer": "^3.0.3",
     "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-uglify": "^0.9.1"
   },

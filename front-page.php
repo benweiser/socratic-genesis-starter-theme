@@ -18,10 +18,14 @@ add_action( 'get_header', 's_home_helper' );
  *
  */
 function s_home_helper() {
-
-        if ( is_active_sidebar( 'home-top' ) || is_active_sidebar( 'home-left' ) || is_active_sidebar( 'home-right' ) || is_active_sidebar( 'home-bottom' ) ) {
+    include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+        if ( is_active_sidebar( 'home-top' ) || is_active_sidebar( 'home-left' ) || is_active_sidebar( 'home-right' ) 
+            || is_active_sidebar( 'home-bottom' ) || is_plugin_active( 'socratic-core-functionality/plugin.php' ) )  {
 
                 remove_action( 'genesis_loop', 'genesis_do_loop' );
+                add_filter( 'genesis_markup_site-inner', '__return_null' );
+                add_filter( 'genesis_markup_content-sidebar-wrap_output', '__return_false' );
+                add_filter( 'genesis_markup_content', '__return_null' );
                 add_action( 'genesis_loop', 's_home_widgets' );
                 
                 /** Force Full Width */

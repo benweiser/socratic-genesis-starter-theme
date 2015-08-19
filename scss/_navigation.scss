@@ -5,7 +5,7 @@
 ----------------------------------------------------------*/
 
 $navigation-break-point: $large-screen;
-$mobile: new-breakpoint(max-width rem(800) 12);
+$mobile: new-breakpoint(max-width rem(1200) 12);
 
 nav {
     display: none;

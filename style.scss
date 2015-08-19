@@ -58,8 +58,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 - Front Page Styles
 */
 
-
-
 /* # HTML5 Reset
 ---------------------------------------------------------------------------------------------------- */
 
@@ -93,16 +91,13 @@ input[type="search"] {
 
 @import "scss/typography";
 
-
 /* # Reusable Components
 ----------------------------------------------- */
 
 @import "scss/vendor/base/reusable_components";
 
-
 /* ## Objects
 --------------------------------------------- */
-
 
 @import "scss/objects";
 
@@ -117,9 +112,9 @@ input[type="search"] {
 /* Forms courtesy of Bitters, Genesis Sample theme defaults commented out below */
 //@import "scss/forms";
 
-
 /* Here we load default gravity form styles to reduce HTTP requests and allow better control over form styles
 Comment out if you are not using Gravity Forms */
+
 @import "scss/gravityforms";
 
 /* ## Tables
@@ -249,18 +244,14 @@ Comment out if you are not using Gravity Forms */
 
 @import "scss/buttons";
 
-
 /* # Masonry
 ----------------------------------------------- */
 @import "scss/masonry";
-
 
 /* # Front page styles
 ----------------------------------------------- */
 
 @import "scss/front-page";
-
-
 
 //************************************
 // 
@@ -268,10 +259,8 @@ Comment out if you are not using Gravity Forms */
 // 
 //************************************
 
-
 //@import "scss/vendor/base/partials/slick";
 //@import "scss/vendor/base/partials/slick-theme";
-
 
 /* # JQuery UI Date Picker Styles - Uncomment if using Gravity forms datepicker
 ----------------------------------------------- */
@@ -283,26 +272,24 @@ Comment out if you are not using Gravity Forms */
 
 @import "scss/top-bar";
 
-
-
 .page-links {
-	margin:0 auto;
+    margin: 0 auto;
+
     @include clearfix;
 }
 
 .scroll-on-page-link {
-	padding: rem(20);
+    padding: rem(20);
     border: 1px solid #ddd;
-	display:block;
-	float:left;
-	margin:0 auto;
-    min-width: 175px;
-	@include media($medium-screen-up) {
-    text-align: center;
-    margin-right: rem(40);
-    margin-bottom: $base-spacing;
-    display: inline-block;
-    float: left;
-	}
-}
+    display: block;
+    margin: 0 auto;
+    min-width: rem(175);
 
+    @include media($small-screen-up) {
+        text-align: center;
+        margin-right: rem(40);
+        margin-bottom: $base-spacing;
+        display: inline-block;
+        float: left;
+    }
+}
