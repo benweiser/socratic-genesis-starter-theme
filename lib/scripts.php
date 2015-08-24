@@ -30,7 +30,7 @@ function s_register_scripts() {
 	add_action( 'wp_enqueue_scripts', 'genesis_enqueue_main_stylesheet', 45 );
 	
 	/* Add Google Fonts */
-	wp_register_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700,900|Oswald:300|400|700|900', array());
+	wp_register_style( 'google-fonts', '//fonts.googleapis.com/css?family=Open+Sans:300,400,700,900|Oswald:300|400|700|900', array());
 
 	/**
 	 * Twitter Bootstrap CSS

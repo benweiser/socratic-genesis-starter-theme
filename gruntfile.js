@@ -44,12 +44,12 @@ module.exports = function(grunt) {
                         /* Resuable UI Components -- Not using one of these? Comment it out to avoid code bloat! */
                         //'src/slickslider.js', 
                         'src/mobile-menu.js',
-                        'src/scroll-on-page-links.js',
-                        'src/accordion-tabs.js',
-                        'src/modals.js',
-                        'src/parallax.js',
-                        'src/top-bar.js',
-                        'src/src.js'
+                     //   'src/scroll-on-page-links.js',
+                     //   'src/accordion-tabs.js',
+                     //   'src/modals.js',
+                     //   'src/parallax.js',
+                      //  'src/top-bar.js',
+                     //   'src/src.js'
                     ],
                 }
             }

@@ -26,7 +26,7 @@ nav {
     font-weight: 700;
     margin: 0 auto;
     overflow: hidden;
-    padding: rem(10);
+  //  padding: rem(10);
     text-align: center;
     visibility: visible;
     width: rem(60);
@@ -102,7 +102,7 @@ button.menu-toggle-secondary {
 
 .menu-toggle {
     width: 50px;
-    height: 55px;
+    height: 45px;
     position: relative;
     margin: rem(16) 0 0;
     float: right;
@@ -184,7 +184,7 @@ button.menu-toggle-secondary {
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
     top: 0px;
-    left: 2px;
+    left: 6px;
 }
 
 .open span:nth-child(2) {
@@ -197,8 +197,8 @@ button.menu-toggle-secondary {
     -moz-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    top: 36px;
-    left: 2px;
+    top: 35px;
+    left: 6px;
 }
 
 /* End Mobile Menu Specific Styles
