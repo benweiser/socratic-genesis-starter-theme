@@ -11,17 +11,6 @@
  * @since      1.0
  */
 
-//if ( is_admin() ) {
-
-
-/** Customizer Options **/
-
-//include_once( get_stylesheet_directory()  . '/lib/admin/s-customizer.php' );
-
-/**Image Reloaded **/
-
-//include_once( get_stylesheet_directory() .  '/lib/admin/s-customize-image-reloaded.php' );
-//}
 
 // Initialize
 require_once (get_stylesheet_directory() . '/lib/init.php');
@@ -94,13 +83,58 @@ function bw_top_bar() {
 
 // Register Sidebars
 function bw_register_sidebars() {
-    $sidebars = array(array('id' => 'home-top', 'name' => __('Home Top', CHILD_DOMAIN), 'description' => __('This is the top homepage section.', CHILD_DOMAIN), 'before_title' => '<h2 class="widgettitle">', 'after_title' => '</h2>'), array('id' => 'home-middle-1', 'name' => __('Home Middle 1', CHILD_DOMAIN), 'description' => __('This is the homepage middle 1.', CHILD_DOMAIN), 'before_title' => '<h3 class="widgettitle">', 'after_title' => '</h3>'), array('id' => 'home-middle-2', 'name' => __('Home Middle 2', CHILD_DOMAIN), 'description' => __('This is the homepage middle 2.', CHILD_DOMAIN), 'before_title' => '<h3 class="widgettitle">', 'after_title' => '</h3>'), array('id' => 'home-middle-3', 'name' => __('Home Middle 3', CHILD_DOMAIN), 'description' => __('This is the homepage middle 3.', CHILD_DOMAIN), 'before_title' => '<h3 class="widgettitle">', 'after_title' => '</h3>'), array('id' => 'home-left', 'name' => __('Home Left', CHILD_DOMAIN), 'description' => __('This is the homepage left section.', CHILD_DOMAIN), 'before_title' => '<h3 class="widgettitle">', 'after_title' => '</h3>'), array('id' => 'home-right', 'name' => __('Home Right', CHILD_DOMAIN), 'description' => __('This is the homepage right section.', CHILD_DOMAIN), 'before_title' => '<h3 class="widgettitle">', 'after_title' => '</h3>'), array('id' => 'home-bottom', 'name' => __('Home Bottom', CHILD_DOMAIN), 'description' => __('This is the homepage right section.', CHILD_DOMAIN),),);
+    $sidebars = array(
+    	array(
+	    	'id' => 'home-top', 
+	    	'name' => __('Home Top', CHILD_DOMAIN), 
+	    	'description' => __('This is the top homepage section.', CHILD_DOMAIN), 
+	    	'before_title' => '<h2 class="widgettitle">', 
+	    	'after_title' => '</h2>'), 
+
+    	array(
+    		'id' => 'home-middle-1', 
+    		'name' => __('Home Middle 1', CHILD_DOMAIN), 
+    		'description' => __('This is the homepage middle 1.', CHILD_DOMAIN), 
+    		'before_title' => '<h3 class="widgettitle">', 
+    		'after_title' => '</h3>'), 
+
+    	array(
+    		'id' => 'home-middle-2', 
+    		'name' => __('Home Middle 2', CHILD_DOMAIN), 
+    		'description' => __('This is the homepage middle 2.', CHILD_DOMAIN), 
+    		'before_title' => '<h3 class="widgettitle">', 
+    		'after_title' => '</h3>'), 
+
+    	array(
+    		'id' => 'home-middle-3', 
+    		'name' => __('Home Middle 3', CHILD_DOMAIN), 
+    		'description' => __('This is the homepage middle 3.', CHILD_DOMAIN), 
+    		'before_title' => '<h3 class="widgettitle">', 
+    		'after_title' => '</h3>'), 
+
+    	array(
+    		'id' => 'home-left', 
+    		'name' => __('Home Left', CHILD_DOMAIN), 
+    		'description' => __('This is the homepage left section.', CHILD_DOMAIN), 
+    		'before_title' => '<h3 class="widgettitle">', 'after_title' => '</h3>'), 
+
+    	array(
+    		'id' => 'home-right', 
+    		'name' => __('Home Right', CHILD_DOMAIN), 
+    		'description' => __('This is the homepage right section.', CHILD_DOMAIN), 
+    		'before_title' => '<h3 class="widgettitle">', 
+    		'after_title' => '</h3>'), 
+
+    	array(
+    		'id' => 'home-bottom', 
+    		'name' => __('Home Bottom', CHILD_DOMAIN), 
+    		'description' => __('This is the homepage right section.', CHILD_DOMAIN),),);
     
     foreach ($sidebars as $sidebar) genesis_register_sidebar($sidebar);
 }
 
-/**
- * Register Scripts - Twitter Bootstrap, Font-Awesome, etc..
+/*
+* Register Scripts - Twitter Bootstrap, Font-Awesome, etc..
 */
 
 require_once ('lib/scripts.php');
@@ -112,4 +146,3 @@ add_theme_support('genesis-accessibility',
 		'skip-links', 
 		'rems'
 		));
-

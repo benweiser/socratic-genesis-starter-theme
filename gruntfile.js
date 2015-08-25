@@ -5,7 +5,7 @@ module.exports = function(grunt) {
             sass: {
                 //     files: "*.scss",
                 files: '**/*.scss',
-                tasks: ['sass', 'autoprefixer' /*, 'concat', 'uglify'*/ ]
+                tasks: ['sass', 'autoprefixer' ]
             },
             concat: {
                 files: 'src/*.js',
@@ -41,15 +41,9 @@ module.exports = function(grunt) {
             basic_and_extras: {
                 files: {
                     'js/dist.js': [
-                        /* Resuable UI Components -- Not using one of these? Comment it out to avoid code bloat! */
-                        //'src/slickslider.js', 
                         'src/mobile-menu.js',
-                     //   'src/scroll-on-page-links.js',
-                     //   'src/accordion-tabs.js',
-                     //   'src/modals.js',
-                     //   'src/parallax.js',
-                      //  'src/top-bar.js',
-                     //   'src/src.js'
+                        'src/top-bar.js',
+                        'src/src.js'
                     ],
                 }
             }
@@ -81,7 +75,7 @@ module.exports = function(grunt) {
                 options: {
                     watchTask: true,
                     // change this to your project's location example localhost/myproject, or www.yourprojectname.dev
-                    proxy: "www.bw-starter.dev/",
+                    proxy: "www.socratic.dev/",
                     tunnel: "local" // < Used for iPhone testing
                 }
             }

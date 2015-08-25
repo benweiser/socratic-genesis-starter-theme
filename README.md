@@ -1,16 +1,16 @@
-# Genesis Sample Theme
+# Socratic Genesis Starter Theme
 
-Github project link: https://github.com/copyblogger/genesis-sample
+Github project link: https://github.com/benweiser/socratic-genesis-starter-theme
 
 
 ## Installation Instructions
 
-1. Upload the Genesis Sample theme folder via FTP to your wp-content/themes/ directory. (The Genesis parent theme needs to be in the wp-content/themes/ directory as well.)
+1. Upload the Socratic starter theme folder via FTP to your wp-content/themes/ directory. (The Genesis parent theme needs to be in the wp-content/themes/ directory as well.)
 2. Go to your WordPress dashboard and select Appearance.
-3. Activate the Genesis Sample theme.
+3. Activate the Socratic starter theme.
 4. Inside your WordPress dashboard, go to Genesis > Theme Settings and configure them to your liking.
 
 
-## Theme Support
+## Dependencies
 
-Please visit http://my.studiopress.com/help/ for theme support.
+To fully utilize this theme you should be comfortable with using Sass along with Bourbon, Neat, and Bitters. This theme comes with a preconfigured gruntfile and you must run npm install to and then grunt in the terminal to begin watch tasks.

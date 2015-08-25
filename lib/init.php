@@ -10,14 +10,14 @@
  * @subpackage Init
  * @author     Ben Weiser
  * @license    http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link       http://wpsmith.net/
+ * @link       http://benweiser.com/
  * @since      1.0
  */
 
 /** Exit if accessed directly */
 if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
 
-add_action( 'genesis_init', 's_constants', 15 );
+add_action( 'genesis_init', 'bw_constants', 15 );
 /**
  * This function defines the Genesis Child theme constants
  *
@@ -28,7 +28,7 @@ add_action( 'genesis_init', 's_constants', 15 );
  *
  * @since 1.1.0
  */
-function s_constants() {
+function bw_constants() {
 	$theme = wp_get_theme();
 	
 	// Child theme (Change but do not remove)
@@ -41,19 +41,8 @@ function s_constants() {
 		/** @type constant Child Theme Version. */
 		define( 'CHILD_THEME_VERSION', $theme->Version );
 		
-		/** @type constant Child Theme Name, used in footer. */
-		define( 'CHILD_THEME_NAME', $theme->Name );
 		
-		/** @type constant Child Theme URL, used in footer. */
-		define( 'CHILD_THEME_URL', $theme->get('ThemeURI') );
-		
-	// Developer Information, see lib/admin/admin-functions.php
-		/** @type constant Child Theme Developer, used in footer. */
-		define( 'CHILD_DEVELOPER', $theme->Author );
-		
-		/** @type constant Child Theme Developer URL, used in footer. */
-		define( 'CHILD_DEVELOPER_URL', $theme->{'Author URI'}  );
-		
+	
 	// Define Directory Location Constants
 		/** @type constant Child Theme Library/Includes URL Location. */
 		define( 'CHILD_LIB_DIR',    CHILD_DIR . '/lib' );
@@ -87,39 +76,33 @@ function s_constants() {
 		define( 'CHILD_CSS',    CHILD_URL .'/css' );	
 }
 
-add_action( 'genesis_init', 's_init', 15 );
+add_action( 'genesis_init', 'bw_init', 15 );
 /**
  * This function calls necessary child theme files
  *
  * @since 1.1.0
  */
-function s_init() {
+function bw_init() {
 		
 	/** Theme Specific Functions */
-	include_once( CHILD_LIB_DIR . '/functions/s-functions.php' );	
+	include_once( CHILD_LIB_DIR . '/functions/bw-functions.php' );	
 	
 	// Load admin files when necessary
 	if ( is_admin() ) {
 
-		/** Admin Functions */
-		include_once( CHILD_LIB_DIR . '/admin/s-admin-functions.php' );
+		// Admin files here
 		
-		/** New Admin Page */
-		//include_once( CHILD_LIB_DIR . '/admin/s-settings.php' );
-		
-		/** Get required plugins */
-	//require_once( CHILD_LIB_DIR . '/plugins/plugins.php' );
 		
 	}
 
 		/** Customizer Options 
 		Must be outside is_admin check because the Customizer displays a theme page**/
-		include_once( CHILD_LIB_DIR . '/admin/s-customizer.php' );
+		include_once( CHILD_LIB_DIR . '/admin/bw-customizer.php' );
 
 		/**Image Reloaded **/
-		include_once( CHILD_LIB_DIR . '/admin/s-customize-image-reloaded.php' );
+		include_once( CHILD_LIB_DIR . '/admin/bw-customize-image-reloaded.php' );
 
-			genesis_register_sidebar( array(
+	genesis_register_sidebar( array(
 	'id'            => 'top-bar',
 	'name'          => __( 'Top Bar', CHILD_DOMAIN ),
 	'description'   => __( 'This is a widget area that is the top bar', CHILD_DOMAIN ),
@@ -127,7 +110,7 @@ function s_init() {
 
 }
 
-add_filter( 'http_request_args', 's_prevent_theme_update', 5, 2 );
+add_filter( 'http_request_args', 'bw_prevent_theme_update', 5, 2 );
 /**
  * Don't update theme from .org repo.
  *
@@ -139,7 +122,7 @@ add_filter( 'http_request_args', 's_prevent_theme_update', 5, 2 );
  * @author Mark Jaquith
  * @link   http://markjaquith.wordpress.com/2009/12/14/excluding-your-plugin-or-theme-from-update-checks/
  */
-function s_prevent_theme_update( $r, $url ) {
+function bw_prevent_theme_update( $r, $url ) {
 	if ( 0 !== strpos( $url, 'http://api.wordpress.org/themes/update-check' ) )
 		return $r; // Not a theme update request. Bail immediately.
 	$themes = unserialize( $r['body']['themes'] );
