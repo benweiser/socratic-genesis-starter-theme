@@ -6,26 +6,26 @@
  * This file adds the Landing template. This file assumes that nothing has been moved
  * from the Genesis default.
  *
- * @category   Genesis_Sandbox
+ * @category   Socratic Starter Theme
  * @package    Templates
  * @subpackage Page
- * @author     Travis Smith
+ * @author     Ben Weiser
  * @license    http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link       http://wpsmith.net/
- * @since      1.1.0
+ * @link       http://benweiser.com
+ * @since      1.0
  */
 
 /** Exit if accessed directly */
 if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
 
-add_filter( 'body_class', 's_add_portfolio_body_class' );
+add_filter( 'body_class', 'bw_add_portfolio_body_class' );
 /**
  * Add page specific body class
  *
  * @param $classes array Body Classes
  * @return $classes array Modified Body Classes
  */
-function s_add_portfolio_body_class( $classes ) {
+function bw_add_portfolio_body_class( $classes ) {
    $classes[] = 'landing';
    return $classes;
 }
