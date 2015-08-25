@@ -1,7 +1,7 @@
 {
-  "name": "genesis-sample",
+  "name": "socratic",
   "version": "1.0.0",
-  "description": "Github project link: https://github.com/copyblogger/genesis-sample",
+  "description": "Github project link: https://github.com/benweiser/socratic-genesis-starter-theme",
   "main": "gruntfile.js",
   "dependencies": {
     "grunt": "^0.4.5",
