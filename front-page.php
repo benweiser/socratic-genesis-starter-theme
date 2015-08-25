@@ -3,13 +3,13 @@
 /**
  * Home Page.
  *
- * @category   Genesis_Sandbox
+ * @category   Socratic Starter Theme
  * @package    Templates
  * @subpackage Home
- * @author     Travis Smith and Jonathan Perez, for Surefire Themes
+ * @author     Ben Weiser
  * @license    http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link       http://wpsmith.net/
- * @since      1.1.0
+ * @link       http://benweiser.com
+ * @since      1.0
  */
 
 add_action( 'get_header', 's_home_helper' );
