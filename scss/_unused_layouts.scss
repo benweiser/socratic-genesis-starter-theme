@@ -1,0 +1,102 @@
+.content-sidebar-sidebar .content-sidebar-wrap,
+.sidebar-content-sidebar .content-sidebar-wrap,
+.sidebar-sidebar-content .content-sidebar-wrap {
+    @include media($large-screen-up) {
+        width: 980px;
+
+        @include omega;
+
+        @include span-columns(10 of 12);
+
+        float: right;
+    }
+}
+
+.content-sidebar-sidebar .content-sidebar-wrap {
+    @include media($large-screen-up) {
+        @include span-columns(9.2 of 12);
+
+        @include omega;
+    }
+}
+
+.sidebar-content-sidebar .content-sidebar-wrap,
+.sidebar-sidebar-content .content-sidebar-wrap {
+    @include media($large-screen-up) {
+        @include span-columns(9.2 of 12);
+
+        float: right;
+
+        @include omega;
+    }
+}
+
+.content-sidebar .content,
+.content-sidebar-sidebar .content,
+.sidebar-content-sidebar .content {
+    float: left;
+}
+
+.content-sidebar-sidebar .content,
+.sidebar-content-sidebar .content,
+.sidebar-sidebar-content .content {
+    @include media($large-screen-up) {
+        @include span-columns(8 of 12);
+
+        //  width:580px;
+    }
+}
+
+.sidebar-sidebar-content .content {
+    @include omega;
+    float: right;
+}
+
+
+.content-sidebar-sidebar .sidebar-secondary {
+    @include direction-context(right-to-left) {
+        @include span-columns(12);
+
+        @include media($large-screen-up) {
+            @include span-columns(2);
+        }
+    }
+}
+
+.sidebar-content-sidebar {
+    .content {
+        @include media($medium-screen-up) {
+            @include span-columns(8);
+        }
+    }
+
+    .sidebar.sidebar-primary {
+        @include media($small-screen-up) {
+            @include direction-context(right-to-left) {
+                @include span-columns(4);
+            }
+        }
+    }
+
+    .sidebar.sidebar-secondary {
+        @include media($small-screen-up) {
+            @include span-columns(2.85);
+        }
+    }
+}
+
+.sidebar-sidebar-content {
+    .sidebar.sidebar-secondary {
+        @include span-columns(12);
+        @include media($small-screen-up) {
+        @include span-columns(2.85);
+        }
+    }
+}
+
+.sidebar-content .sidebar-primary,
+.sidebar-sidebar-content .sidebar-primary {
+    @include media($large-screen-up) {
+        float: left;
+    }
+}

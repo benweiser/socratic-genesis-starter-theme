@@ -1,0 +1,13 @@
+/* Masonry on Posts page
+--------------------------------------------- */
+
+.masonry-page .content .entry {
+	border-radius: 0;
+	width: 240px; /* ((no. of columns) * x) + ((no. of columns – 1) * gutter width) = ".site-inner" width */
+	overflow: hidden;
+	padding:$base-spacing ;
+}
+
+.masonry-page .entry-title {
+	word-wrap: break-word;
+}

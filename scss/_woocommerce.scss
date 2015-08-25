@@ -1,0 +1,18 @@
+.woocommerce .related ul li.product, .woocommerce .related ul.products li.product, .woocommerce .upsells.products ul li.product, .woocommerce .upsells.products ul.products li.product, .woocommerce-page .related ul li.product, .woocommerce-page .related ul.products li.product, .woocommerce-page .upsells.products ul li.product, .woocommerce-page .upsells.products ul.products li.product {
+    @include span-columns(12 of 12);
+    @include media($xsmall-screen-up) {
+        @include span-columns(6 of 12);
+    }
+
+    @include media ($medium-screen-up) {
+        @include span-columns(4 of 12);
+    }
+}
+
+.woocommerce div.product {
+	margin-bottom:$base-spacing * 2;
+}
+
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+	padding:rem(10);
+}

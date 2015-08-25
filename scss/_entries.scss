@@ -1,0 +1,35 @@
+
+.entry {
+	margin-bottom: $base-spacing * 2;
+	@include media($medium-screen-up) {
+	padding: rem(50) rem(60);
+	}
+}
+
+.content .entry {
+	background-color: #fff;
+}
+
+.entry-content ol,
+.entry-content ul {
+	margin-bottom: rem(28);
+	margin-left: rem(40);
+}
+
+.entry-content ol > li {
+	list-style-type: decimal;
+}
+
+.entry-content ul > li {
+	list-style-type: disc;
+}
+
+.entry-content ol ol,
+.entry-content ul ul {
+	margin-bottom: 0;
+}
+
+.entry-content code {
+	background-color: #333;
+	color: #ddd;
+}

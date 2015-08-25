@@ -1,0 +1,48 @@
+// Button colors all match theme's primary action color
+$red: #CE2D4F;
+$green: #53dd6C;
+$orange: #F06543;
+$darkblue: #041932;
+
+.btn-muted {
+    background: $muted-color;
+    color: $muted-text;
+
+    &:hover {
+        background: darken($muted-color, 5);
+        color: $muted-text;
+    }
+}
+
+.btn-loud {
+    background: $action-color;
+    color: #fff !important;
+}
+
+.btn-green {
+    background: $green;
+
+    &:hover {
+        background: darken($green, 5);
+    }
+}
+
+.btn-red {
+    background: $red;
+
+    &:hover {
+        background: darken($red, 5);
+    }
+}
+
+.btn-group {
+    .button {
+        margin-left: $base-spacing / 2;
+        margin-bottom: $base-spacing / 2;
+    }
+}
+
+.class {
+    @include clearfix;
+}
+

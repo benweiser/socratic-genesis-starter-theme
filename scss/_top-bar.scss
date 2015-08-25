@@ -1,0 +1,33 @@
+.top-bar {
+  background-color: $dark-gray;
+  color:$muted-text;
+//  position: fixed;
+  transition: top 0.2s ease-in-out;
+  text-align:center;
+  width: 100%;
+  z-index: 99;
+  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  font-size:rem(16);
+  .wrap {
+    padding:0;
+  }
+  @include media($small-screen-up) {
+      .wrap {
+        padding:0;
+      }
+  }
+}
+
+.site-container {
+//	padding-top:60px;
+}
+
+.bar-up {
+	top:-65px;
+}
+
+.bar-down {
+	top:0;
+}
