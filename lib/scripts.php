@@ -13,7 +13,7 @@
 /*
 Scripts
 ---------------------------------------------------------------------------------------------------- */
-add_action( 'init', 's_register_scripts' );
+add_action( 'init', 'bw_register_scripts' );
 /**
  * Registers Appropriate Scripts and Styles when needed based on Debugging.
  * Assumes that the normal *.min.js/*.min.css is the minified version & *.js is beautified version.
@@ -24,7 +24,7 @@ add_action( 'init', 's_register_scripts' );
  * @uses wp_enqueue_script() WP adds JS to page safely.
  * @uses s_script_suffix() Adds proper CSS/JS suffix based on WP_DEBUG or SCRIPT_DEBUG
  */
-function s_register_scripts() {
+function bw_register_scripts() {
 	
 	remove_action( 'genesis_meta', 'genesis_load_stylesheet' );
 	add_action( 'wp_enqueue_scripts', 'genesis_enqueue_main_stylesheet', 45 );
@@ -79,7 +79,7 @@ function s_register_scripts() {
  *
  * @uses wp_enqueue_script() WP adds JS to page safely.
  */
-function s_enqueue_scripts() {
+function bw_enqueue_scripts() {
 	// You can Also register scripts right before enqueing OR simply enqueue the script without registering.
 	// See s_register_scripts() for examples.
 	wp_enqueue_style( 'google-fonts' );
