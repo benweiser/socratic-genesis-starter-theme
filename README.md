@@ -13,4 +13,4 @@ Github project link: https://github.com/benweiser/socratic-genesis-starter-theme
 
 ## Dependencies
 
-To fully utilize this theme you should be comfortable with using Sass along with Bourbon, Neat, and Bitters. This theme comes with a preconfigured gruntfile and you must run npm install to and then grunt in the terminal to begin watch tasks.
+To fully utilize this theme you should be comfortable with using Genesis, along with Bourbon, Neat and Bitters. This theme comes with a preconfigured gruntfile and you must run npm install to and then grunt in the terminal to begin watch tasks.
