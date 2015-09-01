@@ -81,7 +81,9 @@ function bw_top_bar() {
     genesis_widget_area('top-bar', array('before' => '<div class="top-bar widget-area"><div class="wrap">', 'after' => '</div></div>',));
 }
 
-// Register Sidebars
+/**
+ * Register Sidebars
+ */
 function bw_register_sidebars() {
     $sidebars = array(
     	array(
@@ -146,3 +148,9 @@ add_theme_support('genesis-accessibility',
 		'skip-links', 
 		'rems'
 		));
+
+/**
+ * Reponsive Viewport
+ */
+
+add_theme_support( 'genesis-responsive-viewport' );
