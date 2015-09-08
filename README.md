@@ -1,6 +1,7 @@
 # Socratic Genesis Starter Theme
 
 Github project link: https://github.com/benweiser/socratic-genesis-starter-theme
+Demo link: http://socratic.benweiser.com/
 
 
 ## Installation Instructions
