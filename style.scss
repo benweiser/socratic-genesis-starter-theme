@@ -72,6 +72,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 /* ## Box Sizing
 --------------------------------------------- */
 
+
+@import "scss/vendor/bourbon/bourbon";
+@import "scss/vendor/neat/neat";
+@import "scss/vendor/base/base";
+
 *,
 input[type="search"] {
     -webkit-box-sizing: border-box;
@@ -79,17 +84,13 @@ input[type="search"] {
     box-sizing: border-box;
 }
 
-@import "scss/vendor/bourbon/bourbon";
-@import "scss/vendor/neat/neat";
-@import "scss/vendor/base/base";
-
 /* ## Float Clearing
 --------------------------------------------- */
 
-//@import "scss/clearfixes";
+@import "scss/clearfixes";
 
 /* # Defaults
----------------------------------------------------------------------------------------------------- */
+--------------------------------------------- */
 
 @import "scss/typography";
 
@@ -159,7 +160,7 @@ input[type="search"] {
 @import "scss/wordpress";
 
 /* # Widgets
----------------------------------------------------------------------------------------------------- */
+--------------------------------------------------------------------------------------------------- */
 @import "scss/widgets";
 
 /* ## Featured Content
@@ -181,7 +182,7 @@ input[type="search"] {
 //@import "scss/jetpack";
 
 /* # Site Header
----------------------------------------------------------------------------------- */
+---------------------------------------------- */
 
 @import "scss/header";
 
