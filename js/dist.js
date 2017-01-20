@@ -51,26 +51,22 @@ setInterval(function() {
 
 function hasScrolled() {
     var st = $(this).scrollTop();
-    
-
+   
     if(Math.abs(lastScrollTop - st) <= delta)
         return;
     
-
     if (st > lastScrollTop && st > topbarHeight){
         // Scroll Down
-     //   $('.top-bar').removeClass('bar-down').addClass('bar-up');
+        $('.top-bar').removeClass('bar-down').addClass('bar-up');
     } else {
         // Scroll Up
         if(st + $(window).height() < $(document).height()) {
-     //       $('.top-bar').removeClass('bar-up').addClass('bar-down');
+        $('.top-bar').removeClass('bar-up').addClass('bar-down');
         }
     }
     
     lastScrollTop = st;
 }
-
-
 }); // end ready
 
 
