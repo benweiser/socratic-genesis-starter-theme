@@ -1,5 +1,7 @@
 # Socratic Genesis Starter Theme
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/benweiser/socratic-genesis-starter-theme.svg)](https://greenkeeper.io/)
+
 Github project link: https://github.com/benweiser/socratic-genesis-starter-theme
 
 Demo link: http://socratic.benweiser.com/
